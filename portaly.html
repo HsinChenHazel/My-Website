@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portaly — Hazel Chen</title>
+  <meta name="description" content="AI-guided monetisation for micro-creators on Portaly. UX case study by Hazel Chen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+  <div class="page-transition"></div>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Hazel Chen</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- Case Study Hero -->
+    <section class="cs-hero">
+      <div class="container">
+        <a href="index.html" class="cs-back">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12.5 7.5H2.5M6.5 3.5l-4 4 4 4"/>
+          </svg>
+          All work
+        </a>
+
+        <div class="cs-eyebrow">
+          <span class="case-tag">UX Research</span>
+          <span class="case-tag">AI Design</span>
+          <span class="case-tag">Activation</span>
+        </div>
+
+        <h1>From Sign-Ups to Starters: Activating Micro-Creators Through AI-Guided Monetisation</h1>
+        <p class="cs-subtitle">Helping early-stage creators on Portaly move from passive sign-ups to their first revenue-generating action.</p>
+
+        <div class="cs-meta">
+          <div class="cs-meta-item">
+            <p class="cs-meta-label">Role</p>
+            <p class="cs-meta-value">Lead UX Designer</p>
+          </div>
+          <div class="cs-meta-item">
+            <p class="cs-meta-label">Timeline</p>
+            <p class="cs-meta-value">4 Sprints</p>
+          </div>
+          <div class="cs-meta-item">
+            <p class="cs-meta-label">Platform</p>
+            <p class="cs-meta-value">Web</p>
+          </div>
+          <div class="cs-meta-item">
+            <p class="cs-meta-label">Year</p>
+            <p class="cs-meta-value">2023</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="cs-feature-visual">
+          <div class="case-visual-inner visual-portaly" style="height:100%">
+            <div class="visual-shape" style="width:480px;height:480px;top:-120px;right:-100px;background:rgba(255,255,255,0.1)"></div>
+            <div class="visual-shape" style="width:280px;height:280px;bottom:-60px;left:80px;background:rgba(255,255,255,0.08)"></div>
+            <div class="visual-shape" style="width:160px;height:160px;top:40%;left:40%;background:rgba(255,255,255,0.06)"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <div class="container">
+      <div class="cs-content">
+
+        <!-- Context -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">Context</p>
+          <h2>The Activation Gap</h2>
+          <p>Portaly is a creator monetisation platform enabling income through digital products, live courses, donations, email capture, and 1-to-1 services. In November 2023, growth metrics revealed a clear problem: while creator sign-ups were increasing, monetisation behaviours were not keeping pace.</p>
+          <p>An "activated creator" was defined as someone who published at least one monetisable product or service within 14 days of sign-up. Most new users never reached this milestone.</p>
+
+          <div class="stats-row">
+            <div class="stat-item">
+              <p class="stat-number">48%</p>
+              <p class="stat-label">launched at least one monetisation method in the first month</p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-number">60%+</p>
+              <p class="stat-label">completed profile setup but never configured pricing or paid offerings</p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-number">0</p>
+              <p class="stat-label">structured pathways helping creators decide what to launch first</p>
+            </div>
+          </div>
+
+          <div class="callout">
+            <p>Creators weren't lacking tools. They were lacking clarity, confidence, and actionable first steps.</p>
+          </div>
+        </section>
+
+        <!-- Problem -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">The Problem</p>
+          <h2>The Monetisation Cold-Start Problem</h2>
+          <p>Portaly offered multiple monetisation tools. But tools alone did not create action. When creators entered the monetisation page, they saw many possibilities but little guidance. Without a clear first step, hesitation followed.</p>
+          <p>Our high-level goals were to:</p>
+
+          <ul class="findings-list">
+            <li class="finding-item">
+              <span class="finding-number">01</span>
+              <p class="finding-text"><strong>Lower the barrier to monetisation</strong> — help creators identify what they could realistically sell, even with small audiences or early-stage skills.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">02</span>
+              <p class="finding-text"><strong>Turn vague ideas into actionable plans</strong> — provide structured, low-pressure steps that guide creators toward launching their first offering.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">03</span>
+              <p class="finding-text"><strong>Build confidence through momentum</strong> — replace overwhelm with small, achievable progress that encourages continued engagement.</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Role -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">My Role</p>
+          <h2>End-to-End Discovery &amp; Design</h2>
+          <p>I led the research and UX design of the monetisation activation initiative over 4 sprints, focusing on helping early-stage creators take their first revenue-generating steps on Portaly.</p>
+
+          <ul class="findings-list">
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">Conducted user research and in-depth interviews to understand creators' motivations, readiness, and barriers to monetisation</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">Synthesised research findings into key behavioural and activation insights</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">Facilitated IDEO ideation workshops to explore low-barrier monetisation concepts</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">Designed and prototyped AI-guided monetisation planning experiences</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">Planned and conducted moderated usability testing to validate clarity, confidence, and actionability</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Discovery -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">Discovery</p>
+          <h2>Monetisation Feels Intimidating to Start</h2>
+          <p>Our initial hypothesis was that creators needed better awareness of Portaly's monetisation features. Interviews quickly proved otherwise. Most early-stage creators were not blocked by missing tools — they were blocked at the moment of starting.</p>
+          <p>Many described monetisation as intimidating, high effort, and easy to abandon halfway. Even those with monetisation intent hesitated before launching anything.</p>
+
+          <blockquote>
+            <p>"It takes too much time to make it look good… the pull isn't strong enough, so I gave up halfway."</p>
+          </blockquote>
+          <blockquote>
+            <p>"Selling makes me anxious. Promoting it through posts and stories over and over feels scary."</p>
+          </blockquote>
+          <blockquote>
+            <p>"I'm not confident pricing my work. I worry I'll charge too much."</p>
+          </blockquote>
+
+          <div class="callout">
+            <p>The friction was not feature discovery. It was the first step.</p>
+          </div>
+        </section>
+
+        <!-- Deeper Insights -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">Research Insights</p>
+          <h2>Monetisation Needs a First Step, Not More Features</h2>
+          <p>Combining product data with interviews across creator types uncovered not a lack of intent, but a consistent breakdown between ambition and action.</p>
+
+          <ul class="findings-list">
+            <li class="finding-item">
+              <span class="finding-number">01</span>
+              <p class="finding-text">Creators did not lack ideas. They <strong>lacked clarity on what was realistic to launch first.</strong></p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">02</span>
+              <p class="finding-text">Monetisation felt like a <strong>big leap</strong> rather than a series of small steps.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">03</span>
+              <p class="finding-text"><strong>Pricing</strong> triggered anxiety around self-worth and value positioning.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">04</span>
+              <p class="finding-text">Time to set up felt <strong>disproportionately high</strong> compared to expected returns.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">05</span>
+              <p class="finding-text">Creators preferred <strong>lightweight methods</strong> (donations, affiliate links) over building full products.</p>
+            </li>
+          </ul>
+
+          <div class="callout">
+            <p>Early monetisation intent existed. Without guidance, it rarely translated into action.</p>
+          </div>
+        </section>
+
+        <!-- Process -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">Design Process</p>
+          <h2>How We Got There</h2>
+
+          <h3>1. Product &amp; Competitor Analysis</h3>
+          <p>Competitive analysis revealed that most creator platforms were built to execute monetisation, not initiate it. They assumed creators already had an offer to sell — few provided guidance on what to launch first. Portaly shared this gap.</p>
+
+          <figure>
+            <div class="img-placeholder">
+              <span class="img-placeholder-label">Competitive SWOT Snapshot — add screenshot</span>
+            </div>
+            <figcaption>Competitive SWOT analysis across creator monetisation platforms</figcaption>
+          </figure>
+
+          <h3>2. User Research</h3>
+          <p>Through 9 in-depth creator interviews, we uncovered a consistent gap between monetisation intent and action. Creators expressed interest in earning, but hesitated at the point of committing to a specific offer.</p>
+          <p>Three behavioural themes emerged through affinity mapping:</p>
+
+          <ul class="findings-list">
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text"><strong>Ambition without structure</strong> — creators wanted to monetise, but lacked a clear first step.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text"><strong>Perceived effort outweighed reward</strong> — setting up a paid offering felt like a significant commitment compared to uncertain returns.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text"><strong>Confidence barriers</strong> — pricing, positioning, and self-promotion triggered hesitation and delay.</p>
+            </li>
+          </ul>
+
+          <figure>
+            <div class="img-placeholder">
+              <span class="img-placeholder-label">Affinity Diagramming — add photo</span>
+            </div>
+            <figcaption>Affinity diagramming used to extract recurring patterns and activation pain points across 9 interviews</figcaption>
+          </figure>
+
+          <h3>3. Reframing the Opportunity</h3>
+          <p>Many creators already had valuable assets — content, skills, and small audiences. What they lacked was structure. We reframed the challenge around one question:</p>
+
+          <div class="callout">
+            <p>How might we help part-time creators turn what they already have into something they can launch this week?</p>
+          </div>
+
+          <h3>4. Ideation Workshops</h3>
+          <p>We explored multiple activation approaches — onboarding nudges, monetisation templates, pricing calculators, and gamified progress systems. Through cross-functional workshops and feasibility discussions with engineering, two evaluation criteria emerged: Would this reduce first-step ambiguity? Could this be implemented without rebuilding the monetisation system?</p>
+
+          <div class="callout">
+            <p>The breakthrough came when we shifted from "adding features" to "structuring decision-making" — leading to the concept of a conversational planning layer embedded directly within the monetisation page.</p>
+          </div>
+
+          <figure>
+            <div class="img-placeholder">
+              <span class="img-placeholder-label">Value × Effort Matrix — add screenshot</span>
+            </div>
+            <figcaption>Prioritisation based on projected user engagement and relevance to core activation pain points</figcaption>
+          </figure>
+
+          <h3>5. Journey Mapping</h3>
+          <p>End-to-end journey mapping revealed that friction was concentrated at a single moment: when creators had to define their first offer. Most drop-offs occurred after users entered the monetisation page but before configuring any product or service. Rather than redesigning onboarding, we needed to support creators at the moment of decision.</p>
+
+          <figure>
+            <div class="img-placeholder">
+              <span class="img-placeholder-label">Creator Monetisation Journey Map — add screenshot</span>
+            </div>
+            <figcaption>Mapping the psychological journey from idea to monetisation, revealing key hesitation points across each decision stage</figcaption>
+          </figure>
+        </section>
+
+        <!-- A/B Test -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">Experiment</p>
+          <h2>Structured Form vs Conversational Plan Builder</h2>
+          <p>We were uncertain whether creators preferred a structured form or a conversational AI flow to generate their monetisation plan. I conducted a moderated usability A/B test with 10 creators on the monetisation entry page.</p>
+
+          <div class="ab-grid">
+            <div class="ab-card">
+              <div class="ab-card-visual" style="background: linear-gradient(135deg, #E8E4DC, #D0C9C0); display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#B0AA9E;">Form view — add screenshot</span>
+              </div>
+              <div class="ab-card-info">
+                <p class="ab-card-label">Version A — Structured Form</p>
+                <p class="ab-card-result">3 / 10 completed</p>
+                <p class="ab-card-desc">Users filled out a multi-field form before generating their plan. Upfront articulation amplified uncertainty — a core pain point from research.</p>
+              </div>
+            </div>
+            <div class="ab-card">
+              <div class="ab-card-visual" style="background: linear-gradient(135deg, #A8D8C0, #7FC4C4); display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.7);">Chat view — add screenshot</span>
+              </div>
+              <div class="ab-card-info">
+                <p class="ab-card-label">Version B — Conversational Chat</p>
+                <p class="ab-card-result success">9 / 10 completed</p>
+                <p class="ab-card-desc">Guided prompts progressively built the plan. Users described it as "guided" and "less overwhelming."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <p>Chat reduced decision pressure by progressively scaffolding responses and reinforcing confidence through guided momentum.</p>
+          </div>
+        </section>
+
+        <!-- Solution -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">The Solution</p>
+          <h2>Make Monetisation Feel Doable</h2>
+          <p>We reduced the psychological and practical barriers to first-time monetisation by guiding creators to activate existing tools with clarity and confidence.</p>
+
+          <h3>1. Guided Monetisation Portal</h3>
+          <p>We introduced a dedicated monetisation entry point within Portaly — a conversational chat that narrowed options, matched creators with relevant monetisation paths, and reduced cognitive overload by limiting choices at each step.</p>
+
+          <figure>
+            <div class="img-placeholder" style="aspect-ratio: 16/9;">
+              <span class="img-placeholder-label">AI Chat Flow — add your screen recording / screenshot</span>
+            </div>
+            <figcaption>Instead of exploring features, creators were guided toward a clear starting point</figcaption>
+          </figure>
+
+          <h3>2. Small-Step Activation Design</h3>
+          <p>We broke monetisation into manageable, low-commitment tasks — turning vague ideas into simple action plans, designing step-by-step setup flows, and enabling progress anytime, even in short sessions.</p>
+
+          <figure>
+            <div class="img-placeholder" style="aspect-ratio: 16/9;">
+              <span class="img-placeholder-label">Task Breakdown View — add your screen recording / screenshot</span>
+            </div>
+            <figcaption>Monetisation shifted from a big leap to a series of small, achievable steps</figcaption>
+          </figure>
+        </section>
+
+        <!-- Impact -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">Impact</p>
+          <h2>Turning Sign-Ups into Monetising Creators</h2>
+          <p>By introducing guided monetisation planning and breaking down complex goals into small, actionable steps, we helped early-stage creators move from passive sign-ups to active platform users.</p>
+
+          <div class="stats-row">
+            <div class="stat-item">
+              <p class="stat-number">52% → 84%</p>
+              <p class="stat-label">Users returning within first month to further set up or optimise their pages</p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-number">48% → 56%</p>
+              <p class="stat-label">Users launching at least one monetisation method within first month</p>
+            </div>
+          </div>
+
+          <p>Rather than overwhelming users with monetisation possibilities, the experience focused on small commitments, contextual prompts, and achievable progress — making monetisation feel approachable instead of intimidating.</p>
+        </section>
+
+        <!-- Reflection -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">Reflection</p>
+          <h2>Looking Forward</h2>
+          <p>Beyond guided tools, we see an opportunity to build creator communities and mentor networks. Shared experience can accelerate confidence, experimentation, and sustained monetisation.</p>
+          <p>The key lesson: designing for activation is not about adding more features. It's about reducing the psychological weight of getting started.</p>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Next case study -->
+    <div class="container">
+      <div class="next-case reveal">
+        <p class="next-case-label">Next Project</p>
+        <a href="housefund.html" class="next-case-link">
+          <div>
+            <p class="label" style="margin-bottom:10px;">HouseFund</p>
+            <h3>From "Who Owes What?" to Total Clarity</h3>
+          </div>
+          <div class="next-case-arrow">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3.5 9h11M9.5 4l5 5-5 5"/>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-name">Hazel Chen</span>
+        <div class="footer-links">
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1.5 9.5l7-7M8.5 2.5H3M8.5 2.5v5.5"/>
+            </svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            Resume
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1.5 9.5l7-7M8.5 2.5H3M8.5 2.5v5.5"/>
+            </svg>
+          </a>
+        </div>
+        <span class="footer-copy">© 2024 Hazel Chen</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

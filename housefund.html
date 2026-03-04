@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HouseFund — Hazel Chen</title>
+  <meta name="description" content="Low-friction expense tracking for housemates. UX case study by Hazel Chen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+  <div class="page-transition"></div>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Hazel Chen</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="cs-hero">
+      <div class="container">
+        <a href="index.html" class="cs-back">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12.5 7.5H2.5M6.5 3.5l-4 4 4 4"/>
+          </svg>
+          All work
+        </a>
+
+        <div class="cs-eyebrow">
+          <span class="case-tag">UX Research</span>
+          <span class="case-tag">Product Design</span>
+          <span class="case-tag">Mobile</span>
+        </div>
+
+        <h1>From "Who Owes What?" to Total Clarity</h1>
+        <p class="cs-subtitle">Designing a low-friction expense coordination system that makes shared living financial — and social — harmony effortless.</p>
+
+        <div class="cs-meta">
+          <div class="cs-meta-item">
+            <p class="cs-meta-label">Role</p>
+            <p class="cs-meta-value">UX Designer</p>
+          </div>
+          <div class="cs-meta-item">
+            <p class="cs-meta-label">Timeline</p>
+            <p class="cs-meta-value">2 Sprints</p>
+          </div>
+          <div class="cs-meta-item">
+            <p class="cs-meta-label">Platform</p>
+            <p class="cs-meta-value">iOS Mobile</p>
+          </div>
+          <div class="cs-meta-item">
+            <p class="cs-meta-label">Year</p>
+            <p class="cs-meta-value">2024</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="cs-feature-visual">
+          <div class="case-visual-inner visual-housefund" style="height:100%">
+            <div class="visual-shape" style="width:440px;height:440px;top:-100px;left:-80px;background:rgba(255,255,255,0.11)"></div>
+            <div class="visual-shape" style="width:260px;height:260px;bottom:-60px;right:100px;background:rgba(255,255,255,0.08)"></div>
+            <div class="visual-shape" style="width:140px;height:140px;top:35%;right:25%;background:rgba(255,255,255,0.06)"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <div class="container">
+      <div class="cs-content">
+
+        <!-- Context -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">Context</p>
+          <h2>Money Doesn't Break Friendships. Unclear Money Does.</h2>
+          <p>In shared households, small expenses often turn into coordination problems. Who paid? Who still owes? Did someone already buy detergent?</p>
+          <p>In interviews with 24 young adults who have lived with roommates, most described shared expense coordination as stressful and awkward.</p>
+
+          <div class="callout">
+            <p>The problem was not splitting bills. It was maintaining clear financial visibility across multiple housemates without creating friction.</p>
+          </div>
+        </section>
+
+        <!-- Problem -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">The Problem</p>
+          <h2>What Breaks in Shared Living</h2>
+          <p>Our interviews revealed that the frustration was rarely about the amount of money — it was about the coordination. Three behavioural patterns consistently emerged:</p>
+
+          <ul class="findings-list">
+            <li class="finding-item">
+              <span class="finding-number">01</span>
+              <p class="finding-text"><strong>Visibility gaps</strong> — Housemates often did not know who had paid for what, or whether a purchase had already been made.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">02</span>
+              <p class="finding-text"><strong>Responsibility ambiguity</strong> — Shared expenses were loosely tracked, leading to repeated reminders and uncomfortable follow-ups.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">03</span>
+              <p class="finding-text"><strong>Mental load accumulation</strong> — Small purchases like detergent or paper towels created ongoing cognitive overhead. Someone always had to remember.</p>
+            </li>
+          </ul>
+
+          <div class="callout">
+            <p>The breakdown didn't happen at the moment of payment. It happened in the lack of shared clarity.</p>
+          </div>
+        </section>
+
+        <!-- Role -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">My Role</p>
+          <h2>Full-Cycle UX Across 2 Sprints</h2>
+          <p>I contributed across the full UX lifecycle, from initial research and product scoping to high-fidelity prototyping and usability testing.</p>
+
+          <ul class="findings-list">
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">Conducted user interviews to understand shared living behaviours and expense coordination pain points</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">Performed competitive benchmarking and defined core feature scope</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">Translated insights into wireframes and interaction flows</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">Established a lightweight design system for visual consistency</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">Designed high-fidelity prototypes and iterated based on usability feedback</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Design Principles -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">Design Principles</p>
+          <h2>Four Guiding Priorities</h2>
+          <p>To address the behavioural breakdowns uncovered in research, we defined four guiding principles before touching any screens:</p>
+
+          <ul class="findings-list">
+            <li class="finding-item">
+              <span class="finding-number">01</span>
+              <p class="finding-text"><strong>Make responsibility visible</strong> — every shared expense should have clear ownership and status.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">02</span>
+              <p class="finding-text"><strong>Reduce coordination effort</strong> — tracking should require minimal input and minimal follow-up.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">03</span>
+              <p class="finding-text"><strong>Lower social friction</strong> — the system should reduce the need for direct confrontation or repeated reminders.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">04</span>
+              <p class="finding-text"><strong>Reframe the emotional experience</strong> — shared expense management should feel collaborative and reassuring, not tense or awkward.</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Process -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">Design Process</p>
+          <h2>From Messy Household Problem to Clear System</h2>
+          <p>We didn't start by designing screens. We started by isolating the real coordination breakdowns in shared living, then validating a system that could reduce them with minimal effort.</p>
+
+          <h3>1. Target User &amp; Persona</h3>
+          <p>We designed for housemates who split frequent everyday costs but don't want the overhead of tracking, following up, or renegotiating later. This persona clarified the behavioural priorities that guided our system design: visibility, minimal effort, and reduced social friction.</p>
+
+          <figure>
+            <div class="img-placeholder">
+              <span class="img-placeholder-label">Persona — add screenshot</span>
+            </div>
+            <figcaption>Persona capturing the behavioural priorities that shaped our design decisions</figcaption>
+          </figure>
+
+          <h3>2. User Journey Mapping</h3>
+          <p>The journey map revealed that friction did not stem from calculation, but from coordination breakdowns. Three recurring tension points stood out:</p>
+
+          <ul class="findings-list">
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text"><strong>Duplicate purchases due to visibility gaps</strong> — housemates were unsure what had already been bought.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text"><strong>Ambiguity during expense logging</strong> — unclear ownership and split methods led to future misunderstandings.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text"><strong>Discomfort when following up on payments</strong> — manual reminders created social tension.</p>
+            </li>
+          </ul>
+
+          <div class="callout">
+            <p>This confirmed that we were not designing a calculator, but a coordination system.</p>
+          </div>
+
+          <figure>
+            <div class="img-placeholder">
+              <span class="img-placeholder-label">User Journey Map — add screenshot</span>
+            </div>
+            <figcaption>Journey insights revealing where coordination breaks down most severely</figcaption>
+          </figure>
+
+          <h3>3. Competitive Audit &amp; Information Architecture</h3>
+          <p>We analysed leading bill-splitting tools and found three consistent patterns:</p>
+
+          <ul class="findings-list">
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text"><strong>Transaction-centric design</strong> — most tools focus on calculating balances and settling payments, with limited support for coordination before or after.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text"><strong>Minimal shared visibility</strong> — few platforms surface unsettled balances or recurring household needs in a way that reduces cognitive load.</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text"><strong>Separation between planning and logging</strong> — existing tools treat purchases and expense recording as separate flows, increasing repetitive effort.</p>
+            </li>
+          </ul>
+
+          <div class="callout">
+            <p>Rather than building a more complex calculator, we focused on designing a coordination layer: pre-purchase visibility, structured logging, neutral reminders, and recurring purchase handling.</p>
+          </div>
+
+          <figure>
+            <div class="img-placeholder">
+              <span class="img-placeholder-label">Competitor Audit — add screenshots</span>
+            </div>
+            <figcaption>Competitive benchmarking of Splitwise, Google Pay, and BillBear</figcaption>
+          </figure>
+
+          <h3>4. Wireframes &amp; Iteration</h3>
+          <p>We dedicated a full week to iterating on wireframes, stress-testing the core experience before moving into visual design. Rather than moving quickly, we focused on structural clarity and asked:</p>
+
+          <ul class="findings-list">
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">What information must be immediately visible on the Home screen?</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">How much detail is necessary before it becomes overwhelming?</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">How can unsettled balances and reminders remain visible without clutter?</p>
+            </li>
+          </ul>
+
+          <p>Early iterations included additional summaries and visual elements. Testing revealed excessive information reduced scannability. We simplified to prioritise clear debt visibility and unsettled status at a glance.</p>
+
+          <figure>
+            <div class="img-placeholder">
+              <span class="img-placeholder-label">Wireframe Iterations — add screenshots</span>
+            </div>
+            <figcaption>Early exploration testing information hierarchy and density on the Home screen</figcaption>
+          </figure>
+
+          <h3>5. Design System</h3>
+          <p>After validating the core structure, we developed a lightweight design system to reinforce clarity and emotional ease. The system prioritised:</p>
+
+          <ul class="findings-list">
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">Clear visual hierarchy to emphasise balances and settlement status</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">Consistent colour cues to signal payment states — green selected to create a reassuring atmosphere</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text">A calm, friendly tone with subtle illustrations to soften the experience without distracting from core functionality</p>
+            </li>
+          </ul>
+
+          <figure>
+            <div class="img-placeholder">
+              <span class="img-placeholder-label">Design System — add screenshot</span>
+            </div>
+            <figcaption>Visual system designed to reinforce clarity and reduce financial tension</figcaption>
+          </figure>
+        </section>
+
+        <!-- Solution -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">The Solution</p>
+          <h2>Make Shared Living Feel Effortless</h2>
+          <p>House Fund transforms shared expense tracking from a source of tension into a predictable coordination system. Instead of chasing payments or second-guessing purchases, housemates gain clarity, structure, and peace of mind.</p>
+
+          <h3>1. From "Who Owes What?" to Instant Clarity</h3>
+          <p>The Home dashboard makes balances and transaction details instantly visible. Users can tap a Remind button, but recipients receive a neutral system-generated notification rather than a personal message — perceived as far less confrontational in testing.</p>
+
+          <figure>
+            <div class="img-placeholder" style="aspect-ratio:9/16;max-width:360px;margin-left:auto;margin-right:auto;">
+              <span class="img-placeholder-label">Home Screen — add screen recording / screenshot</span>
+            </div>
+            <figcaption>Real-time visibility into current balances and detailed transaction history</figcaption>
+          </figure>
+
+          <h3>2. From Scattered Receipts to Structured Coordination</h3>
+          <p>When logging an expense, users define ownership, participants, split method, and settlement timing upfront. Unsettled items remain clearly visible on the Home dashboard, preventing ambiguity from accumulating. Participants described this structure as "fair" and "clear."</p>
+
+          <figure>
+            <div class="img-placeholder" style="aspect-ratio:9/16;max-width:360px;margin-left:auto;margin-right:auto;">
+              <span class="img-placeholder-label">Add Expense Flow — add screen recording / screenshot</span>
+            </div>
+            <figcaption>Clear accountability from the start with fewer unresolved balances</figcaption>
+          </figure>
+
+          <h3>3. From Repetition to Effortless Routine</h3>
+          <p>Recurring household items are managed through a shared To-Buy list that connects planning with expense logging. Completed items can be converted directly into structured expense entries, preventing duplicate purchases and repetitive input. Participants described this as reducing "small but constant coordination effort."</p>
+
+          <figure>
+            <div class="img-placeholder" style="aspect-ratio:9/16;max-width:360px;margin-left:auto;margin-right:auto;">
+              <span class="img-placeholder-label">To-Buy List — add screen recording / screenshot</span>
+            </div>
+            <figcaption>A shared To-Buy list that converts directly into expense records</figcaption>
+          </figure>
+
+          <h3>4. From Isolated Transactions to Shared Financial Transparency</h3>
+          <p>The Tracker provides a monthly overview of shared and individual spending across categories. Users can instantly see total household spending without reviewing transactions one by one. Participants described this as time-saving and helpful for personal budgeting.</p>
+
+          <figure>
+            <div class="img-placeholder" style="aspect-ratio:9/16;max-width:360px;margin-left:auto;margin-right:auto;">
+              <span class="img-placeholder-label">Tracker View — add screen recording / screenshot</span>
+            </div>
+            <figcaption>Monthly overview of shared and individual household spending</figcaption>
+          </figure>
+        </section>
+
+        <!-- Usability Testing -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">Iteration</p>
+          <h2>Usability Test &amp; Key Changes</h2>
+
+          <h3>1. Improving Visual Clarity &amp; Information Hierarchy</h3>
+          <p>Usability testing revealed that dense information and low colour contrast made key insights harder to identify at a glance. We improved visual hierarchy and category differentiation to reduce cognitive load and enhance clarity.</p>
+
+          <figure>
+            <div class="img-placeholder">
+              <span class="img-placeholder-label">Before / After Iteration — add screenshot</span>
+            </div>
+            <figcaption>Visual hierarchy and contrast improvements from usability testing</figcaption>
+          </figure>
+
+          <h3>2. Reducing Decision Friction in Split Selection</h3>
+          <p>Usage data showed uneven adoption across split methods. We reprioritised options based on real behaviour, reducing friction during expense entry and surfacing the most-used options first.</p>
+        </section>
+
+        <!-- Impact -->
+        <section class="cs-section reveal">
+          <p class="cs-section-label">Outcomes</p>
+          <h2>Coordination Made Effortless</h2>
+          <p>HouseFund transformed shared expense management from a recurring source of social friction into a lightweight coordination habit.</p>
+
+          <ul class="findings-list">
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text"><strong>Reduced uncertainty</strong> — real-time balance visibility eliminated ambiguity around who owed what</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text"><strong>Fewer awkward check-ins</strong> — neutral system reminders replaced uncomfortable personal follow-ups</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text"><strong>Lower cognitive load</strong> — the To-Buy list and recurring expense handling reduced the mental overhead of shared living</p>
+            </li>
+            <li class="finding-item">
+              <span class="finding-number">—</span>
+              <p class="finding-text"><strong>Greater financial clarity</strong> — the Tracker simplified personal budgeting without adding extra effort</p>
+            </li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Next case study -->
+    <div class="container">
+      <div class="next-case reveal">
+        <p class="next-case-label">Next Project</p>
+        <a href="https://www.notion.so/From-Sign-Ups-to-Starters-Activating-Micro-Creators-Through-AI-Guided-Monetisation-312bbc07ca41809081a8dc2ea811e52d?source=copy_linkportaly.html" class="next-case-link">
+          <div>
+            <p class="label" style="margin-bottom:10px;">Portaly</p>
+            <h3>From Sign-Ups to Starters: Activating Micro-Creators</h3>
+          </div>
+          <div class="next-case-arrow">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3.5 9h11M9.5 4l5 5-5 5"/>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-name">Hazel Chen</span>
+        <div class="footer-links">
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1.5 9.5l7-7M8.5 2.5H3M8.5 2.5v5.5"/>
+            </svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            Resume
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1.5 9.5l7-7M8.5 2.5H3M8.5 2.5v5.5"/>
+            </svg>
+          </a>
+        </div>
+        <span class="footer-copy">© 2024 Hazel Chen</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
