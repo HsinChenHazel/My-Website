@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music — Hazel Chen</title>
+  <meta name="description" content="What I listen to." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .music-main {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 120px 24px 100px;
+    }
+
+    .music-label {
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 12px;
+    }
+
+    .music-title {
+      font-size: 22px;
+      font-weight: normal;
+      font-family: Georgia, serif;
+      color: #111;
+      margin-bottom: 6px;
+      letter-spacing: 0;
+    }
+
+    .music-subtitle {
+      font-size: 15px;
+      color: #999;
+      margin-bottom: 56px;
+    }
+
+    .genre-section {
+      margin-bottom: 40px;
+    }
+
+    .genre-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .genre-label {
+      font-size: 12px;
+      color: #2ab5b5;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0;
+    }
+
+    .song-list {
+      list-style: none;
+      margin-bottom: 14px;
+    }
+
+    /* ——— Song item ——— */
+    .song-item {
+      border-bottom: 1px solid #f5f5f5;
+      cursor: pointer;
+    }
+
+    .song-item:first-child {
+      border-top: 1px solid #f5f5f5;
+    }
+
+    .song-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      user-select: none;
+    }
+
+    .song-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .song-text {
+      font-size: 15px;
+      color: #444;
+      flex: 1;
+      transition: color 0.2s ease;
+    }
+
+    .song-item:hover .song-text,
+    .song-item.active .song-text {
+      color: #111;
+    }
+
+    /* ——— Play button ——— */
+    .song-play-btn {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .song-item:hover .song-play-btn {
+      border-color: #2ab5b5;
+      box-shadow: 0 1px 6px rgba(42, 181, 181, 0.18);
+    }
+
+    .song-item.active .song-play-btn {
+      border-color: #2ab5b5;
+    }
+
+    .song-play-btn .icon-play,
+    .song-play-btn .icon-stop {
+      position: absolute;
+      transition: opacity 0.2s ease;
+    }
+
+    .song-play-btn .icon-stop { opacity: 0; }
+    .song-item.active .song-play-btn .icon-play { opacity: 0; }
+    .song-item.active .song-play-btn .icon-stop { opacity: 1; }
+
+    /* ——— Embed panel ——— */
+    .song-embed {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.45s ease, opacity 0.35s ease;
+    }
+
+    .song-item.active .song-embed {
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    .song-embed-inner {
+      position: relative;
+      padding-top: 56.25%;
+      margin-bottom: 14px;
+    }
+
+    .song-embed-inner iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+      border-radius: 8px;
+    }
+
+    /* ——— Genre extra link ——— */
+    .genre-extra-link {
+      font-size: 13px;
+      color: #999;
+      text-decoration: underline;
+      text-decoration-color: #ddd;
+      transition: color 0.2s ease, text-decoration-color 0.2s ease;
+    }
+
+    .genre-extra-link:hover {
+      color: #111;
+      text-decoration-color: #111;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- Page transition -->
+  <div class="page-transition"></div>
+
+  <!-- Nav -->
+  <nav>
+    <a href="index.html" class="nav-logo">Hazel Chen</a>
+  </nav>
+
+  <main class="music-main">
+
+    <a href="index.html" class="page-back">← back to home</a>
+
+    <h1 class="music-title">Genres I love</h1>
+    <p class="music-subtitle">What I enjoy listening to and keep coming back to.</p>
+
+    <!-- Math Rock -->
+    <div class="genre-section">
+      <div class="genre-header">
+        <p class="genre-label">Math Rock</p>
+        <a href="mathrock.html" class="genre-extra-link">What is math rock →</a>
+      </div>
+      <ul class="song-list">
+        <li class="song-item" data-video="0SeI-VIOqO8">
+          <div class="song-row">
+            <img src="images/clever-girl.jpg" alt="Clever Girl" class="song-img" />
+            <span class="song-text">Clever Girl – Elm</span>
+            <div class="song-play-btn">
+              <svg class="icon-play" width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 1.5l7 4-7 4V1.5Z" fill="#2ab5b5"/></svg>
+              <svg class="icon-stop" width="9" height="9" viewBox="0 0 9 9" fill="none"><rect x="1" y="1" width="7" height="7" rx="1" fill="#2ab5b5"/></svg>
+            </div>
+          </div>
+          <div class="song-embed"></div>
+        </li>
+        <li class="song-item" data-video="1aFljDEFPXU">
+          <div class="song-row">
+            <img src="images/elephant-gym.jpg" alt="Elephant Gym" class="song-img" />
+            <span class="song-text">Elephant Gym – Games</span>
+            <div class="song-play-btn">
+              <svg class="icon-play" width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 1.5l7 4-7 4V1.5Z" fill="#2ab5b5"/></svg>
+              <svg class="icon-stop" width="9" height="9" viewBox="0 0 9 9" fill="none"><rect x="1" y="1" width="7" height="7" rx="1" fill="#2ab5b5"/></svg>
+            </div>
+          </div>
+          <div class="song-embed"></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Funk / Groove -->
+    <div class="genre-section">
+      <p class="genre-label">Funk / Groove</p>
+      <ul class="song-list">
+        <li class="song-item" data-video="KQRV0c1KXYc">
+          <div class="song-row">
+            <img src="images/vulfpeck.jpg" alt="Vulfpeck" class="song-img" />
+            <span class="song-text">Vulfpeck – Beastly</span>
+            <div class="song-play-btn">
+              <svg class="icon-play" width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 1.5l7 4-7 4V1.5Z" fill="#2ab5b5"/></svg>
+              <svg class="icon-stop" width="9" height="9" viewBox="0 0 9 9" fill="none"><rect x="1" y="1" width="7" height="7" rx="1" fill="#2ab5b5"/></svg>
+            </div>
+          </div>
+          <div class="song-embed"></div>
+        </li>
+        <li class="song-item" data-video="BtYYnqfb4xw">
+          <div class="song-row">
+            <img src="images/cory-wong.jpg" alt="Cory Wong" class="song-img" />
+            <span class="song-text">Cory Wong – Cosmic Sans</span>
+            <div class="song-play-btn">
+              <svg class="icon-play" width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 1.5l7 4-7 4V1.5Z" fill="#2ab5b5"/></svg>
+              <svg class="icon-stop" width="9" height="9" viewBox="0 0 9 9" fill="none"><rect x="1" y="1" width="7" height="7" rx="1" fill="#2ab5b5"/></svg>
+            </div>
+          </div>
+          <div class="song-embed"></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Nu-Disco -->
+    <div class="genre-section">
+      <p class="genre-label">Nu-Disco</p>
+      <ul class="song-list">
+        <li class="song-item" data-video="jda_k6r9R1A">
+          <div class="song-row">
+            <img src="images/limperatrice.jpg" alt="L'Impératrice" class="song-img" />
+            <span class="song-text">L'Impératrice – Agitations Tropicales</span>
+            <div class="song-play-btn">
+              <svg class="icon-play" width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 1.5l7 4-7 4V1.5Z" fill="#2ab5b5"/></svg>
+              <svg class="icon-stop" width="9" height="9" viewBox="0 0 9 9" fill="none"><rect x="1" y="1" width="7" height="7" rx="1" fill="#2ab5b5"/></svg>
+            </div>
+          </div>
+          <div class="song-embed"></div>
+        </li>
+        <li class="song-item" data-video="_2qsU8FGU_E">
+          <div class="song-row">
+            <img src="images/parcels.jpg" alt="Parcels" class="song-img" />
+            <span class="song-text">Parcels – Tieduprightnow</span>
+            <div class="song-play-btn">
+              <svg class="icon-play" width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 1.5l7 4-7 4V1.5Z" fill="#2ab5b5"/></svg>
+              <svg class="icon-stop" width="9" height="9" viewBox="0 0 9 9" fill="none"><rect x="1" y="1" width="7" height="7" rx="1" fill="#2ab5b5"/></svg>
+            </div>
+          </div>
+          <div class="song-embed"></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Indie / Dream Pop -->
+    <div class="genre-section">
+      <p class="genre-label">Indie / Dream Pop</p>
+      <ul class="song-list">
+        <li class="song-item" data-video="eGwKvxGpLqs">
+          <div class="song-row">
+            <img src="images/angus-julia-stone.jpg" alt="Angus &amp; Julia Stone" class="song-img" />
+            <span class="song-text">Angus &amp; Julia Stone – Heart Beats Slow</span>
+            <div class="song-play-btn">
+              <svg class="icon-play" width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 1.5l7 4-7 4V1.5Z" fill="#2ab5b5"/></svg>
+              <svg class="icon-stop" width="9" height="9" viewBox="0 0 9 9" fill="none"><rect x="1" y="1" width="7" height="7" rx="1" fill="#2ab5b5"/></svg>
+            </div>
+          </div>
+          <div class="song-embed"></div>
+        </li>
+        <li class="song-item" data-video="eGwKvxGpLqs">
+          <div class="song-row">
+            <img src="images/men-i-trust.jpg" alt="Men I Trust" class="song-img" />
+            <span class="song-text">Men I Trust – Seven</span>
+            <div class="song-play-btn">
+              <svg class="icon-play" width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 1.5l7 4-7 4V1.5Z" fill="#2ab5b5"/></svg>
+              <svg class="icon-stop" width="9" height="9" viewBox="0 0 9 9" fill="none"><rect x="1" y="1" width="7" height="7" rx="1" fill="#2ab5b5"/></svg>
+            </div>
+          </div>
+          <div class="song-embed"></div>
+        </li>
+      </ul>
+    </div>
+
+  </main>
+
+  <footer class="home-footer">
+    <a href="https://www.linkedin.com/in/hazel-chen-1628b7228/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="#" target="_blank" rel="noopener noreferrer">Resume</a>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      var items = document.querySelectorAll('.song-item');
+
+      items.forEach(function (item) {
+        item.addEventListener('click', function () {
+          var isActive = item.classList.contains('active');
+
+          // Close all open items and stop their videos
+          items.forEach(function (other) {
+            if (other.classList.contains('active')) {
+              other.classList.remove('active');
+              other.querySelector('.song-embed').innerHTML = '';
+            }
+          });
+
+          // If this item was closed, open it
+          if (!isActive) {
+            var embed = item.querySelector('.song-embed');
+            var videoId = item.dataset.video;
+
+            var inner = document.createElement('div');
+            inner.className = 'song-embed-inner';
+
+            var iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+            iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+            iframe.setAttribute('allowfullscreen', '');
+
+            inner.appendChild(iframe);
+            embed.appendChild(inner);
+
+            // Trigger reflow so the transition plays from 0
+            embed.offsetHeight;
+            item.classList.add('active');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

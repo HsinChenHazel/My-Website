@@ -57,6 +57,17 @@ body.loaded { opacity: 1; }
   --space-3xl: 180px;
 }
 
+/* ——— Teal inline link ——— */
+.link-teal {
+  color: #2ab5b5;
+  text-decoration: none;
+  transition: text-decoration-color 0.2s ease;
+}
+.link-teal:hover {
+  text-decoration: underline;
+  text-decoration-color: #2ab5b5;
+}
+
 /* ——— Base links ——— */
 a {
   color: #111;
@@ -148,6 +159,34 @@ body.hovering .cursor-ring {
 .work-row:nth-child(1) { animation-delay: 0.54s; }
 .work-row:nth-child(2) { animation-delay: 0.62s; }
 
+.subpage-title {
+  font-size: 22px;
+  font-weight: normal;
+  font-family: Georgia, serif;
+  color: #111;
+  margin-bottom: 6px;
+  letter-spacing: 0;
+}
+
+.subpage-subtitle {
+  font-size: 15px;
+  color: #999;
+  margin-bottom: 56px;
+}
+
+/* ——— Back link (shared) ——— */
+.page-back {
+  font-size: 12px;
+  font-family: 'Space Mono', monospace;
+  color: #bbb;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  display: inline-block;
+  margin-bottom: 48px;
+  transition: color 0.2s;
+}
+.page-back:hover { color: #666; text-decoration: none; }
+
 /* ——— Navigation ——— */
 nav {
   position: fixed;
@@ -159,11 +198,9 @@ nav {
   align-items: center;
   justify-content: space-between;
   transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
-nav.scrolled {
-  border-bottom: 1px solid #eee;
-}
 
 .nav-logo {
   font-family: Georgia, serif;
@@ -184,6 +221,10 @@ nav.scrolled {
   transition: color 0.2s ease;
 }
 .nav-links a:hover { color: #111; }
+
+nav.scrolled {
+  border-bottom: 1px solid #eee;
+}
 
 /* ——— Homepage layout ——— */
 .home-main {
@@ -748,3 +789,4 @@ figcaption {
   background: rgba(42, 181, 181, 0.3);
   color: #111;
 }
+

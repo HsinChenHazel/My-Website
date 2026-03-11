@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is Math Rock — Hazel Chen</title>
+  <meta name="description" content="A genre where every instrument counts differently." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .mr-main {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 80px 24px 100px;
+    }
+
+    .mr-back {
+      font-size: 12px;
+      font-family: 'Space Mono', monospace;
+      color: #bbb;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      display: inline-block;
+      margin-bottom: 48px;
+      transition: color 0.2s;
+    }
+    .mr-back:hover { color: #666; text-decoration: none; }
+
+    .mr-eyebrow {
+      font-size: 11px;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 0.25em;
+      color: #2ab5b5;
+      margin-bottom: 12px;
+    }
+
+    .mr-h1 {
+      font-size: 22px;
+      font-weight: normal;
+      color: #111;
+      margin: 0 0 6px;
+      letter-spacing: 0;
+      font-family: Georgia, serif;
+    }
+
+    .mr-intro {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.9;
+      margin: 0 0 40px; 
+      font-family: Georgia, serif;
+    }
+
+    .mr-section { margin-bottom: 72px; }
+
+    .mr-section-bordered {
+      margin-bottom: 72px;
+      border-top: 1px solid #eee;
+      padding-top: 48px;
+    }
+
+    .mr-section-num {
+      font-size: 11px;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 0.2em;
+      color: #ccc;
+      margin-bottom: 8px;
+    }
+
+    .mr-section-title {
+      font-size: 22px;
+      font-weight: 400;
+      color: #111;
+      margin: 0 0 32px;
+      font-family: Georgia, serif;
+    }
+
+    .mr-section-title-sm { margin: 0 0 20px; }
+
+    /* Timeline */
+    .mr-timeline { position: relative; padding-left: 24px; }
+
+    .mr-timeline-line {
+      position: absolute;
+      left: 7px; top: 12px; bottom: 12px;
+      width: 1px;
+      background: rgba(42,181,181,0.3);
+    }
+
+    .mr-timeline-item {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 36px;
+    }
+    .mr-timeline-item:last-child { margin-bottom: 0; }
+
+    .mr-timeline-dot {
+      position: absolute;
+      left: 0; top: 5px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid #2ab5b5;
+      z-index: 1;
+    }
+
+    .mr-timeline-meta {
+      margin-bottom: 3px;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .mr-timeline-year {
+      font-size: 12px;
+      font-family: 'Space Mono', monospace;
+      color: #2ab5b5;
+      font-weight: 700;
+    }
+
+    .mr-timeline-place {
+      font-size: 11px;
+      font-family: 'Space Mono', monospace;
+      color: #bbb;
+      letter-spacing: 0.06em;
+    }
+
+    .mr-timeline-h {
+      font-size: 14px;
+      font-weight: 600;
+      color: #111;
+      margin: 0 0 6px;
+      font-family: Georgia, serif;
+    }
+
+    .mr-timeline-body {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.8;
+      margin: 0;
+      font-family: Georgia, serif;
+    }
+
+    /* Prose */
+    .mr-prose p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.95;
+      margin: 0 0 16px;
+      font-family: Georgia, serif;
+    }
+    .mr-prose p:last-child { margin-bottom: 0; }
+
+    /* Demo description */
+    .mr-desc {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.8;
+      margin: 0 0 28px;
+      font-family: Georgia, serif;
+    }
+
+    /* Rhythm section wrapper */
+    .rhythm-section {
+      border-top: 1px solid #eee;
+      padding-top: 32px;
+      padding-bottom: 32px;
+    }
+
+    /* YouTube embed */
+    .yt-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .yt-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    .mr-footer-section {
+      padding-top: 48px;
+      border-top: 1px solid #eee;
+    }
+
+    .mr-watch-label {
+      font-size: 11px;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 0.2em;
+      color: #ccc;
+      margin-bottom: 16px;
+    }
+
+    .mr-watch-title {
+      font-size: 22px;
+      font-weight: 400;
+      color: #111;
+      margin: 0 0 8px;
+      font-family: Georgia, serif;
+    }
+
+    .mr-watch-desc {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.8;
+      margin: 0 0 24px;
+      font-family: Georgia, serif;
+    }
+
+    .reveal-delay-4 { transition-delay: 0.44s; }
+
+    /* ——— Ambient player ——— */
+    .ambient-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 14px;
+      background: #f9f9f9;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      margin-bottom: 40px;
+    }
+
+    .ambient-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      background: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .ambient-btn:hover {
+      border-color: #2ab5b5;
+      box-shadow: 0 1px 6px rgba(42,181,181,0.18);
+    }
+
+    .ambient-btn.playing { border-color: #2ab5b5; }
+
+    .ambient-btn .amb-play,
+    .ambient-btn .amb-pause {
+      position: absolute;
+      transition: opacity 0.2s;
+    }
+
+    .ambient-btn .amb-pause        { opacity: 0; }
+    .ambient-btn.playing .amb-play  { opacity: 0; }
+    .ambient-btn.playing .amb-pause { opacity: 1; }
+
+    .ambient-song {
+      font-size: 13px;
+      color: #444;
+      font-family: Georgia, serif;
+    }
+
+    .ambient-hint {
+      font-size: 11px;
+      color: #bbb;
+      font-family: 'Space Mono', monospace;
+      margin-left: 2px;
+    }
+
+    .ambient-vol {
+      margin-left: auto;
+      font-size: 10px;
+      color: #ccc;
+      font-family: 'Space Mono', monospace;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- Page transition -->
+  <div class="page-transition"></div>
+
+  <!-- Nav -->
+  <nav>
+    <a href="index.html" class="nav-logo">Hazel Chen</a>
+  </nav>
+
+  <main class="mr-main">
+
+    <a href="music.html" class="mr-back">← back to music</a>
+
+    <!-- Header -->
+    <div class="reveal">
+      <h1 class="mr-h1">What is math rock?</h1>
+      <p class="mr-intro">A genre where every instrument counts differently — and somehow it all fits together. Not math as in complicated. Math as in <em>precise</em>.</p>
+    </div>
+
+    <!-- Ambient player -->
+    <div class="ambient-bar reveal">
+      <div id="yt-ambient" style="display:none"></div>
+      <button class="ambient-btn" id="ambient-btn" aria-label="Play ambient music">
+        <svg class="amb-play" width="9" height="10" viewBox="0 0 9 10" fill="none"><path d="M1.5 1l7 4-7 4V1Z" fill="#2ab5b5"/></svg>
+        <svg class="amb-pause" width="9" height="10" viewBox="0 0 9 10" fill="none"><rect x="1" y="1" width="2.5" height="8" rx="1" fill="#2ab5b5"/><rect x="5.5" y="1" width="2.5" height="8" rx="1" fill="#2ab5b5"/></svg>
+      </button>
+      <span class="ambient-song">Clever Girl – Elm</span>
+      <span class="ambient-hint">· listen while you read</span>
+      <span class="ambient-vol">vol 30%</span>
+    </div>
+
+    <!-- 01 History -->
+    <div class="mr-section reveal">
+      <p class="mr-section-num">01</p>
+      <h2 class="mr-section-title">Where it came from</h2>
+      <div class="mr-timeline">
+        <div class="mr-timeline-line"></div>
+
+        <div class="mr-timeline-item reveal">
+          <div class="mr-timeline-dot"></div>
+          <div class="mr-timeline-meta">
+            <span class="mr-timeline-year">1980s</span>
+            <span class="mr-timeline-place">Chicago &amp; DC</span>
+          </div>
+          <p class="mr-timeline-h">Underground roots</p>
+          <p class="mr-timeline-body">Post-hardcore bands like Slint and Hüsker Dü start breaking away from standard song structures. Loud-quiet dynamics, irregular phrasing. The groundwork gets laid without anyone calling it math rock yet.</p>
+        </div>
+
+        <div class="mr-timeline-item reveal reveal-delay-1">
+          <div class="mr-timeline-dot"></div>
+          <div class="mr-timeline-meta">
+            <span class="mr-timeline-year">1990s</span>
+            <span class="mr-timeline-place">USA</span>
+          </div>
+          <p class="mr-timeline-h">The genre forms</p>
+          <p class="mr-timeline-body">Don Caballero, Rodan, and June of 44 push the rhythmic complexity further. Odd time signatures, interlocking guitar parts, no vocals. The name "math rock" starts circulating — mostly as a joke at first. The music is too precise, too calculated.</p>
+        </div>
+
+        <div class="mr-timeline-item reveal reveal-delay-2">
+          <div class="mr-timeline-dot"></div>
+          <div class="mr-timeline-meta">
+            <span class="mr-timeline-year">2000s</span>
+            <span class="mr-timeline-place">Japan</span>
+          </div>
+          <p class="mr-timeline-h">Japan takes it further</p>
+          <p class="mr-timeline-body">toe, Lite, and Tera Melos bring a new precision and emotional depth. Japanese math rock is cleaner, more melodic. The bass becomes a lead voice instead of just a rhythm instrument. This is the sound Elephant Gym grew up on.</p>
+        </div>
+
+        <div class="mr-timeline-item reveal reveal-delay-3">
+          <div class="mr-timeline-dot"></div>
+          <div class="mr-timeline-meta">
+            <span class="mr-timeline-year">2010s</span>
+            <span class="mr-timeline-place">Taiwan &amp; worldwide</span>
+          </div>
+          <p class="mr-timeline-h">The global wave</p>
+          <p class="mr-timeline-body">Elephant Gym emerges from Kaohsiung. Tricot from Kyoto. Clever Girl from Baltimore. The internet collapses geography — a band in Taiwan can be discovered in Sydney overnight. Math rock becomes truly global.</p>
+        </div>
+
+        <div class="mr-timeline-item reveal reveal-delay-4">
+          <div class="mr-timeline-dot"></div>
+          <div class="mr-timeline-meta">
+            <span class="mr-timeline-year">Now</span>
+            <span class="mr-timeline-place">Everywhere</span>
+          </div>
+          <p class="mr-timeline-h">Still evolving</p>
+          <p class="mr-timeline-body">The genre keeps mutating — blending with jazz, ambient, post-rock. The defining thread isn't a sound anymore, it's an attitude: every instrument deserves its own rhythmic voice.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 02 What it sounds like -->
+    <div class="mr-section-bordered reveal">
+      <p class="mr-section-num">02</p>
+      <h2 class="mr-section-title mr-section-title-sm">What it sounds like</h2>
+      <div class="mr-prose">
+        <p>Imagine three people in a room, each counting out loud — but counting different numbers. One says <em>1-2-3-4</em>, another says <em>1-2-3-4-5-6-7</em>, and a third is somewhere in between. They all started at the same moment. They're all keeping perfect time. But they're not counting the same thing.</p>
+        <p>That's math rock. Each instrument has its own rhythmic cycle. They drift apart, create unexpected tensions, and eventually snap back together — often at a moment you didn't see coming.</p>
+        <p>It's not chaotic. It's hyper-organised. The complexity isn't noise — it's <em>texture</em>. Once your ear locks in to what each instrument is doing, the music opens up completely.</p>
+      </div>
+    </div>
+
+    <!-- 03 Poly demo -->
+    <div class="mr-section-bordered reveal">
+      <p class="mr-section-num">03</p>
+      <h2 class="mr-section-title mr-section-title-sm">Hear it for yourself</h2>
+      <p class="mr-desc">Bass and drums count in 4 — guitar counts in 7. They meet every 28 steps. Try muting instruments one by one to hear each line on its own.</p>
+      <div id="poly-demo"></div>
+    </div>
+
+    <!-- 04 Rhythm sections -->
+    <div class="reveal" style="margin-bottom:48px;border-top:1px solid #eee;padding-top:48px;">
+      <p class="mr-section-num">04</p>
+      <h2 class="mr-section-title mr-section-title-sm">The rhythms it uses</h2>
+      <p class="mr-desc">From regular 4/4 to 9/8 — each pattern has its own feel. Press play on each one and notice how your sense of "where the beat is" shifts.</p>
+      <div id="rhythm-sections"></div>
+    </div>
+
+    <!-- Footer video -->
+    <div class="mr-footer-section reveal">
+      <p class="mr-watch-label">WATCH</p>
+      <h2 class="mr-watch-title">Hear it explained</h2>
+      <p class="mr-watch-desc">A short video that explains math rock if you want to go deeper.</p>
+      <div class="yt-embed">
+        <iframe src="https://www.youtube.com/embed/MF4Fs1lgYc8" allowfullscreen></iframe>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="home-footer">
+    <a href="https://www.linkedin.com/in/hazel-chen-1628b7228/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="#" target="_blank" rel="noopener noreferrer">Resume</a>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <!-- YouTube IFrame API for ambient player -->
+  <script>
+    (function() {
+      var tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(tag);
+    })();
+
+    window.onYouTubeIframeAPIReady = function() {
+      window.ytAmbient = new YT.Player('yt-ambient', {
+        height: 0, width: 0,
+        videoId: '0SeI-VIOqO8',
+        playerVars: { autoplay: 0, controls: 0 },
+        events: {
+          onReady: function(e) { e.target.setVolume(30); },
+          onStateChange: function(e) {
+            if (e.data === YT.PlayerState.ENDED || e.data === YT.PlayerState.PAUSED) {
+              document.getElementById('ambient-btn').classList.remove('playing');
+            }
+          }
+        }
+      });
+    };
+
+    document.getElementById('ambient-btn').addEventListener('click', function() {
+      if (!window.ytAmbient) return;
+      var btn = this;
+      if (btn.classList.contains('playing')) {
+        window.ytAmbient.pauseVideo();
+        btn.classList.remove('playing');
+      } else {
+        window.ytAmbient.playVideo();
+        btn.classList.add('playing');
+      }
+    });
+  </script>
+
+  <script>
+  (function () {
+    var TEAL = '#2ab5b5';
+
+    /* ── Audio primitives ─────────────────────────────── */
+    function playBass(ctx, freq, time) {
+      var o1 = ctx.createOscillator(), o2 = ctx.createOscillator();
+      var gain = ctx.createGain(), filter = ctx.createBiquadFilter();
+      o1.type = 'sawtooth'; o1.frequency.value = freq;
+      o2.type = 'sine'; o2.frequency.value = freq * 2;
+      filter.type = 'lowpass'; filter.frequency.value = 400; filter.Q.value = 2;
+      o1.connect(filter); o2.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
+      gain.gain.setValueAtTime(0, time);
+      gain.gain.linearRampToValueAtTime(0.6, time + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.3, time + 0.1);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + 0.35);
+      o1.start(time); o1.stop(time + 0.4); o2.start(time); o2.stop(time + 0.4);
+    }
+
+    function playGuitar(ctx, freq, time) {
+      var o1 = ctx.createOscillator(), o2 = ctx.createOscillator();
+      var gain = ctx.createGain(), filter = ctx.createBiquadFilter();
+      o1.type = 'sawtooth'; o1.frequency.value = freq;
+      o2.type = 'sine'; o2.frequency.value = freq * 3;
+      filter.type = 'bandpass'; filter.frequency.value = 1200; filter.Q.value = 1.5;
+      o1.connect(filter); o2.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
+      gain.gain.setValueAtTime(0, time);
+      gain.gain.linearRampToValueAtTime(0.4, time + 0.005);
+      gain.gain.exponentialRampToValueAtTime(0.15, time + 0.06);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + 0.22);
+      o1.start(time); o1.stop(time + 0.25); o2.start(time); o2.stop(time + 0.25);
+    }
+
+    function playKick(ctx, time) {
+      var osc = ctx.createOscillator(), gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination); osc.type = 'sine';
+      osc.frequency.setValueAtTime(160, time); osc.frequency.exponentialRampToValueAtTime(40, time + 0.08);
+      gain.gain.setValueAtTime(1.0, time); gain.gain.exponentialRampToValueAtTime(0.001, time + 0.2);
+      osc.start(time); osc.stop(time + 0.25);
+    }
+
+    function playSnare(ctx, time) {
+      var bufferSize = ctx.sampleRate * 0.1;
+      var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      var data = buffer.getChannelData(0);
+      for (var i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+      var noise = ctx.createBufferSource(); noise.buffer = buffer;
+      var noiseGain = ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.4, time); noiseGain.gain.exponentialRampToValueAtTime(0.001, time + 0.12);
+      var filter = ctx.createBiquadFilter(); filter.type = 'highpass'; filter.frequency.value = 1000;
+      noise.connect(filter); filter.connect(noiseGain); noiseGain.connect(ctx.destination);
+      var osc = ctx.createOscillator(), oscGain = ctx.createGain();
+      osc.type = 'triangle'; osc.frequency.value = 180;
+      oscGain.gain.setValueAtTime(0.3, time); oscGain.gain.exponentialRampToValueAtTime(0.001, time + 0.08);
+      osc.connect(oscGain); oscGain.connect(ctx.destination);
+      noise.start(time); noise.stop(time + 0.15); osc.start(time); osc.stop(time + 0.1);
+    }
+
+    function playHihat(ctx, time, open) {
+      var bufferSize = ctx.sampleRate * 0.05;
+      var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      var data = buffer.getChannelData(0);
+      for (var i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+      var noise = ctx.createBufferSource(); noise.buffer = buffer;
+      var filter = ctx.createBiquadFilter(); filter.type = 'highpass'; filter.frequency.value = 7000;
+      var gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.25, time); gain.gain.exponentialRampToValueAtTime(0.001, time + (open ? 0.18 : 0.04));
+      noise.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
+      noise.start(time); noise.stop(time + 0.2);
+    }
+
+    function playTone(ctx, freq, gain, time, dur) {
+      dur = dur || 0.08;
+      var osc = ctx.createOscillator(), g = ctx.createGain();
+      osc.connect(g); g.connect(ctx.destination);
+      osc.frequency.value = freq; osc.type = 'sine';
+      g.gain.setValueAtTime(gain, time);
+      g.gain.exponentialRampToValueAtTime(0.001, time + dur);
+      osc.start(time); osc.stop(time + dur + 0.01);
+    }
+
+    function playGuitarTone(ctx, freq, gain, time) {
+      var osc = ctx.createOscillator(), g = ctx.createGain();
+      var f = ctx.createBiquadFilter();
+      f.type = 'bandpass'; f.frequency.value = freq * 2; f.Q.value = 1;
+      osc.connect(f); f.connect(g); g.connect(ctx.destination);
+      osc.type = 'triangle'; osc.frequency.value = freq;
+      g.gain.setValueAtTime(gain, time);
+      g.gain.exponentialRampToValueAtTime(0.001, time + 0.12);
+      osc.start(time); osc.stop(time + 0.14);
+    }
+
+    /* ── Poly demo data ───────────────────────────────── */
+    var TOTAL = 28;
+    var BASS_HITS = [0,4,8,14,16,20,24];
+    var BASS_NOTES = [87.3,103.8,87.3,116.5,87.3,98.0,103.8];
+    var GUITAR_HITS = [0,7,14,21];
+    var GUITAR_NOTES = [392,466,370,440];
+    var KICK_HITS = new Set([0,8,16,24]);
+    var SNARE_HITS = new Set([4,12,20]);
+    var HIHAT_O = new Set([6,13,20,27]);
+    var HIHAT_C = new Set([2,9,16,23]);
+    var BASS_ACC = new Set([0,8,16,24]);
+    var GUITAR_ACC = new Set([0,7,14,21]);
+
+    function makeRange(n) { return Array.from({length:n},(_,i)=>i); }
+
+    var beatsPoly = {
+      bass:   makeRange(TOTAL).map(function(i){ return BASS_HITS.indexOf(i)>=0?1:0; }),
+      kick:   makeRange(TOTAL).map(function(i){ return KICK_HITS.has(i)?1:0; }),
+      snare:  makeRange(TOTAL).map(function(i){ return SNARE_HITS.has(i)?1:0; }),
+      hihat:  makeRange(TOTAL).map(function(i){ return HIHAT_O.has(i)||HIHAT_C.has(i)?1:0; }),
+      guitar: makeRange(TOTAL).map(function(i){ return GUITAR_HITS.indexOf(i)>=0?1:0; })
+    };
+
+    var POLY_META = [
+      {key:'bass',   label:'Bass',   sublabel:'counting in 4', color:'#1a8a8a'},
+      {key:'kick',   label:'Kick',   sublabel:'beat 1 & 3',    color:'#2ab5b5'},
+      {key:'snare',  label:'Snare',  sublabel:'beat 2 & 4',    color:'#7dd4d4'},
+      {key:'hihat',  label:'Hi-Hat', sublabel:'8th notes',     color:'#9ecfcf'},
+      {key:'guitar', label:'Guitar', sublabel:'counting in 7', color:'#0d6b6b'}
+    ];
+
+    /* ── PolyDemo builder ─────────────────────────────── */
+    function buildPolyDemo(container) {
+      var playing = false, step = -1, bpm = 100, stepVal = 0;
+      var audioCtx = null, timer = null;
+      var muted = {bass:false,kick:false,snare:false,hihat:false,guitar:false};
+      var cellRefs = {};
+
+      // Step number header
+      var headerGrid = document.createElement('div');
+      headerGrid.style.cssText = 'display:grid;grid-template-columns:110px 1fr;gap:12px;margin-bottom:6px';
+      headerGrid.appendChild(document.createElement('div'));
+      var numRow = document.createElement('div');
+      numRow.style.cssText = 'display:grid;grid-template-columns:repeat('+TOTAL+',1fr);gap:2px';
+      makeRange(TOTAL).forEach(function(i) {
+        var d = document.createElement('div');
+        d.style.cssText = 'text-align:center;font-size:7px;font-family:\'Space Mono\',monospace;font-weight:700;color:'+(i%4===0?TEAL:'transparent');
+        d.textContent = i%4===0 ? (i+1) : '·';
+        numRow.appendChild(d);
+      });
+      headerGrid.appendChild(numRow);
+      container.appendChild(headerGrid);
+
+      // Instrument rows
+      POLY_META.forEach(function(meta) {
+        var key = meta.key, label = meta.label, sublabel = meta.sublabel, color = meta.color;
+        cellRefs[key] = [];
+
+        var row = document.createElement('div');
+        row.style.cssText = 'display:grid;grid-template-columns:110px 1fr;gap:12px;margin-bottom:7px;align-items:center';
+
+        var labelCell = document.createElement('div');
+        labelCell.style.cssText = 'text-align:right;display:flex;align-items:center;justify-content:flex-end;gap:6px';
+
+        var labelWrap = document.createElement('div');
+        var nameEl = document.createElement('div');
+        nameEl.style.cssText = 'font-size:10px;font-family:\'Space Mono\',monospace;color:'+color+';text-transform:uppercase;letter-spacing:0.08em;transition:color 0.2s;white-space:nowrap';
+        nameEl.textContent = label;
+        var subEl = document.createElement('div');
+        subEl.style.cssText = 'font-size:8px;font-family:\'Space Mono\',monospace;color:#ccc;margin-top:1px;white-space:nowrap';
+        subEl.textContent = sublabel;
+        labelWrap.appendChild(nameEl);
+        labelWrap.appendChild(subEl);
+
+        var muteBtn = document.createElement('button');
+        muteBtn.style.cssText = 'width:20px;height:20px;border-radius:50%;border:1px solid '+color+';background:'+color+'20;color:'+color+';font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0';
+        muteBtn.textContent = '−';
+
+        var gridEl = document.createElement('div');
+        gridEl.style.cssText = 'display:grid;grid-template-columns:repeat('+TOTAL+',1fr);gap:2px;opacity:1;transition:opacity 0.2s';
+
+        beatsPoly[key].forEach(function(on, i) {
+          var cell = document.createElement('div');
+          cell.style.cssText = 'aspect-ratio:1;border-radius:2px;transition:all 0.06s ease;background:'+(on ? color+'50' : '#f0f0f0');
+          gridEl.appendChild(cell);
+          cellRefs[key].push(cell);
+        });
+
+        muteBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          muted[key] = !muted[key];
+          var m = muted[key];
+          muteBtn.textContent = m ? '+' : '−';
+          muteBtn.style.border = '1px solid '+(m ? '#ddd' : color);
+          muteBtn.style.background = m ? '#f5f5f5' : color+'20';
+          muteBtn.style.color = m ? '#bbb' : color;
+          nameEl.style.color = m ? '#ddd' : color;
+          gridEl.style.opacity = m ? '0.12' : '1';
+        });
+
+        labelCell.appendChild(labelWrap);
+        labelCell.appendChild(muteBtn);
+        row.appendChild(labelCell);
+        row.appendChild(gridEl);
+        container.appendChild(row);
+      });
+
+      function updatePolyCell(key, i, isActive) {
+        var cell = cellRefs[key][i];
+        var color = POLY_META.filter(function(m){return m.key===key;})[0].color;
+        var on = beatsPoly[key][i];
+        var isAcc = key==='bass' ? BASS_ACC.has(i) : key==='guitar' ? GUITAR_ACC.has(i) : false;
+        if (isActive && !muted[key]) {
+          cell.style.background = on ? '#fff' : color+'18';
+          cell.style.boxShadow = on ? '0 0 7px '+color : 'none';
+          cell.style.transform = on ? 'scale(1.25)' : 'scale(1)';
+        } else {
+          cell.style.background = on ? (isAcc ? color : color+'50') : '#f0f0f0';
+          cell.style.boxShadow = 'none';
+          cell.style.transform = 'scale(1)';
+        }
+      }
+
+      function advanceStep(s) {
+        if (step >= 0) {
+          POLY_META.forEach(function(m){ updatePolyCell(m.key, step, false); });
+        }
+        step = s;
+        POLY_META.forEach(function(m){ updatePolyCell(m.key, step, true); });
+      }
+
+      function resetCells() {
+        if (step >= 0) {
+          POLY_META.forEach(function(m){ updatePolyCell(m.key, step, false); });
+        }
+        step = -1; stepVal = 0;
+      }
+
+      // Controls
+      var controls = document.createElement('div');
+      controls.style.cssText = 'display:flex;align-items:center;justify-content:space-between;margin-top:20px';
+
+      var playBtn = document.createElement('button');
+      playBtn.style.cssText = 'width:44px;height:44px;border-radius:50%;border:2px solid #ddd;background:white;color:'+TEAL+';cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0';
+      playBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11" fill="currentColor"/></svg>';
+
+      var bpmControls = document.createElement('div');
+      bpmControls.style.cssText = 'display:flex;align-items:center;gap:8px';
+      var speedLabel = document.createElement('span');
+      speedLabel.style.cssText = 'font-size:9px;font-family:\'Space Mono\',monospace;color:#ccc;letter-spacing:0.1em';
+      speedLabel.textContent = 'SPEED';
+      var bpmMinus = document.createElement('button');
+      bpmMinus.style.cssText = 'width:22px;height:22px;border-radius:50%;border:1px solid #e8e8e8;background:white;color:#aaa;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center';
+      bpmMinus.textContent = '−';
+      var bpmDisplay = document.createElement('span');
+      bpmDisplay.style.cssText = 'font-size:11px;font-family:\'Space Mono\',monospace;color:'+TEAL+';width:50px;text-align:center';
+      bpmDisplay.textContent = bpm+' BPM';
+      var bpmPlus = document.createElement('button');
+      bpmPlus.style.cssText = 'width:22px;height:22px;border-radius:50%;border:1px solid #e8e8e8;background:white;color:#aaa;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center';
+      bpmPlus.textContent = '+';
+
+      bpmControls.appendChild(speedLabel);
+      bpmControls.appendChild(bpmMinus);
+      bpmControls.appendChild(bpmDisplay);
+      bpmControls.appendChild(bpmPlus);
+      controls.appendChild(playBtn);
+      controls.appendChild(bpmControls);
+      container.appendChild(controls);
+
+      function startTimer() {
+        if (window.ytAmbient) { window.ytAmbient.pauseVideo(); document.getElementById('ambient-btn').classList.remove('playing'); }
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        var last = audioCtx.currentTime;
+        timer = setInterval(function() {
+          var now = audioCtx.currentTime, sd = (60/bpm)/4;
+          if (now >= last + sd) {
+            last += sd;
+            var s = stepVal;
+            advanceStep(s);
+            if (!muted.bass && BASS_HITS.indexOf(s)>=0) playBass(audioCtx, BASS_NOTES[BASS_HITS.indexOf(s)], now);
+            if (!muted.kick && KICK_HITS.has(s)) playKick(audioCtx, now);
+            if (!muted.snare && SNARE_HITS.has(s)) playSnare(audioCtx, now);
+            if (!muted.hihat && (HIHAT_O.has(s)||HIHAT_C.has(s))) playHihat(audioCtx, now, HIHAT_O.has(s));
+            if (!muted.guitar && GUITAR_HITS.indexOf(s)>=0) playGuitar(audioCtx, GUITAR_NOTES[GUITAR_HITS.indexOf(s)], now);
+            stepVal = (s+1) % TOTAL;
+          }
+        }, 10);
+      }
+
+      playBtn.addEventListener('click', function() {
+        playing = !playing;
+        if (playing) {
+          playBtn.style.border = '2px solid '+TEAL;
+          playBtn.style.background = TEAL;
+          playBtn.style.color = 'white';
+          playBtn.style.boxShadow = '0 0 16px '+TEAL+'40';
+          playBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12"><rect x="1" y="1" width="10" height="10" fill="currentColor"/></svg>';
+          startTimer();
+        } else {
+          playBtn.style.border = '2px solid #ddd';
+          playBtn.style.background = 'white';
+          playBtn.style.color = TEAL;
+          playBtn.style.boxShadow = 'none';
+          playBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11" fill="currentColor"/></svg>';
+          clearInterval(timer);
+          resetCells();
+        }
+      });
+
+      bpmMinus.addEventListener('click', function() { bpm = Math.max(60, bpm-5); bpmDisplay.textContent = bpm+' BPM'; });
+      bpmPlus.addEventListener('click', function()  { bpm = Math.min(160, bpm+5); bpmDisplay.textContent = bpm+' BPM'; });
+    }
+
+    /* ── Rhythm sections data ─────────────────────────── */
+    var SECTIONS = [
+      { id:'4_4', label:'4 / 4', title:'Regular time', feel:'Predictable. Grounded. You can dance without thinking.', steps:16, grouping:[4,4,4,4], bpm:98,
+        instruments:{
+          kick:  {label:'Kick',  color:'#2ab5b5',freq:60,  beats:[1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0],accent:[1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]},
+          snare: {label:'Snare', color:'#7dd4d4',freq:200, beats:[0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0],accent:[0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0]},
+          hihat: {label:'Hi-Hat',color:'#a8e6e6',freq:800, beats:[1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0],accent:[1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]},
+          bass:  {label:'Bass',  color:'#1a8a8a',freq:80,  beats:[1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0],accent:[1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0]},
+          guitar:{label:'Guitar',color:'#0d6b6b',freq:330, beats:[0,1,0,0,0,1,0,1,0,1,0,0,0,1,0,1],accent:[0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0]}
+        }},
+      { id:'3_3_2', label:'3–3–2', title:'Uneven accents', feel:'Slightly off. Funky. Like a sentence that ends too quickly.', steps:16, grouping:[3,3,2,3,3,2], bpm:110,
+        instruments:{
+          kick:  {label:'Kick',  color:'#2ab5b5',freq:60,  beats:[1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0],accent:[1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0]},
+          snare: {label:'Snare', color:'#7dd4d4',freq:200, beats:[0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,1],accent:[0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1]},
+          hihat: {label:'Hi-Hat',color:'#a8e6e6',freq:800, beats:[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],accent:[1,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0]},
+          bass:  {label:'Bass',  color:'#1a8a8a',freq:80,  beats:[1,0,0,0,1,0,0,1,1,0,0,0,1,0,0,1],accent:[1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0]},
+          guitar:{label:'Guitar',color:'#0d6b6b',freq:330, beats:[0,1,0,0,1,0,0,1,0,1,0,0,1,0,0,1],accent:[0,1,0,0,1,0,0,0,0,1,0,0,1,0,0,0]}
+        }},
+      { id:'7_8', label:'7 / 8', title:'The missing half-beat', feel:'Almost there, but not quite. Perpetually unresolved.', steps:14, grouping:[3,2,2,3,2,2], bpm:110,
+        instruments:{
+          kick:  {label:'Kick',  color:'#2ab5b5',freq:60,  beats:[1,0,0,0,0,1,0,1,0,0,0,0,1,0],accent:[1,0,0,0,0,0,0,1,0,0,0,0,0,0]},
+          snare: {label:'Snare', color:'#7dd4d4',freq:200, beats:[0,0,1,0,1,0,0,0,0,1,0,1,0,0],accent:[0,0,1,0,0,0,0,0,0,1,0,0,0,0]},
+          hihat: {label:'Hi-Hat',color:'#a8e6e6',freq:800, beats:[1,0,1,0,1,1,0,1,0,1,0,1,1,0],accent:[1,0,0,0,0,0,0,1,0,0,0,0,0,0]},
+          bass:  {label:'Bass',  color:'#1a8a8a',freq:80,  beats:[1,0,0,1,0,1,0,1,0,0,1,0,1,0],accent:[1,0,0,0,0,0,0,1,0,0,0,0,0,0]},
+          guitar:{label:'Guitar',color:'#0d6b6b',freq:330, beats:[1,0,0,1,0,1,0,1,0,0,1,0,1,0],accent:[1,0,0,0,0,0,0,1,0,0,0,0,0,0]}
+        }},
+      { id:'5_4', label:'5 / 4', title:'One beat too many', feel:'Limping forward. Like a waltz with an extra step.', steps:20, grouping:[3,2,3,2,3,2,3,2], bpm:116,
+        instruments:{
+          kick:  {label:'Kick',  color:'#2ab5b5',freq:60,  beats:[1,0,0,1,0,1,0,0,1,0,1,0,0,1,0,1,0,0,1,0],accent:[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0]},
+          snare: {label:'Snare', color:'#7dd4d4',freq:200, beats:[0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0],accent:[0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0]},
+          hihat: {label:'Hi-Hat',color:'#a8e6e6',freq:800, beats:[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],accent:[1,0,0,1,0,1,0,0,1,0,1,0,0,1,0,1,0,0,1,0]},
+          bass:  {label:'Bass',  color:'#1a8a8a',freq:80,  beats:[1,0,0,0,1,0,1,0,0,1,1,0,0,0,1,0,1,0,0,1],accent:[1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0]},
+          guitar:{label:'Guitar',color:'#0d6b6b',freq:330, beats:[0,0,1,0,1,0,0,1,0,1,0,0,1,0,1,0,0,1,0,1],accent:[0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]}
+        }},
+      { id:'9_8', label:'9 / 8', title:'The rolling waltz', feel:'Rolling. Tumbling forward. A waltz that can\'t quite stop.', steps:18, grouping:[2,2,2,3,2,2,2,3], bpm:120,
+        instruments:{
+          kick:  {label:'Kick',  color:'#2ab5b5',freq:60,  beats:[1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1,0,0],accent:[1,0,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0]},
+          snare: {label:'Snare', color:'#7dd4d4',freq:200, beats:[0,1,0,0,0,1,0,0,1,0,1,0,0,0,1,0,0,1],accent:[0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0]},
+          hihat: {label:'Hi-Hat',color:'#a8e6e6',freq:800, beats:[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],accent:[1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1,0,0]},
+          bass:  {label:'Bass',  color:'#1a8a8a',freq:80,  beats:[1,0,0,1,0,0,1,0,1,1,0,0,1,0,0,1,0,1],accent:[1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0]},
+          guitar:{label:'Guitar',color:'#0d6b6b',freq:330, beats:[1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0],accent:[1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0]}
+        }}
+    ];
+
+    function calcGroupStarts(grouping, steps) {
+      var starts = new Set(), pos = 0;
+      grouping.forEach(function(g) { if (pos < steps) { starts.add(pos); pos += g; } });
+      return starts;
+    }
+
+    /* ── RhythmSection builder ────────────────────────── */
+    var stopCurrentSection = null;
+
+    function buildRhythmSection(container, section) {
+      var playing = false, step = -1, bpm = section.bpm, stepVal = 0;
+      var audioCtx = null, timer = null;
+      var keys = Object.keys(section.instruments);
+      var muted = {};
+      keys.forEach(function(k){ muted[k] = false; });
+      var cellRefs = {};
+      var groupStarts = calcGroupStarts(section.grouping, section.steps);
+
+      var wrapper = document.createElement('div');
+      wrapper.className = 'rhythm-section';
+
+      // Section header
+      var header = document.createElement('div');
+      header.style.marginBottom = '20px';
+
+      var titleRow = document.createElement('div');
+      titleRow.style.cssText = 'display:flex;align-items:center;gap:16px;margin-bottom:4px';
+      var timesigEl = document.createElement('span');
+      timesigEl.style.cssText = 'font-size:16px;font-family:\'Space Mono\',monospace;letter-spacing:0.12em;color:'+TEAL;
+      timesigEl.textContent = section.label;
+      var titleEl = document.createElement('h3');
+      titleEl.style.cssText = 'font-size:20px;font-weight:400;color:#111;margin:0;font-family:Georgia,serif';
+      titleEl.textContent = section.title;
+      titleRow.appendChild(timesigEl);
+      titleRow.appendChild(titleEl);
+
+      var feelEl = document.createElement('p');
+      feelEl.style.cssText = 'font-size:13px;color:#aaa;font-family:Georgia,serif;margin:0';
+      feelEl.textContent = '↳ '+section.feel;
+
+      header.appendChild(titleRow);
+      header.appendChild(feelEl);
+      wrapper.appendChild(header);
+
+      // Step number header
+      var stepHeaderGrid = document.createElement('div');
+      stepHeaderGrid.style.cssText = 'display:grid;grid-template-columns:64px 1fr;gap:12px;margin-bottom:4px';
+      stepHeaderGrid.appendChild(document.createElement('div'));
+      var stepNums = document.createElement('div');
+      stepNums.style.cssText = 'display:grid;grid-template-columns:repeat('+section.steps+',1fr);gap:3px';
+      makeRange(section.steps).forEach(function(i) {
+        var d = document.createElement('div');
+        d.style.cssText = 'text-align:center;font-size:8px;font-family:\'Space Mono\',monospace;font-weight:700;color:'+(groupStarts.has(i)?TEAL:'#e0e0e0');
+        d.textContent = groupStarts.has(i) ? (i+1) : '·';
+        stepNums.appendChild(d);
+      });
+      stepHeaderGrid.appendChild(stepNums);
+      wrapper.appendChild(stepHeaderGrid);
+
+      // Instrument rows
+      keys.forEach(function(key) {
+        var inst = section.instruments[key];
+        cellRefs[key] = [];
+
+        var row = document.createElement('div');
+        row.style.cssText = 'display:grid;grid-template-columns:64px 1fr;gap:12px;margin-bottom:7px;align-items:center';
+
+        var labelCell = document.createElement('div');
+        labelCell.style.cssText = 'display:flex;align-items:center;justify-content:flex-end;gap:6px';
+
+        var nameEl = document.createElement('span');
+        nameEl.style.cssText = 'font-size:9px;font-family:\'Space Mono\',monospace;letter-spacing:0.06em;color:#aaa;text-transform:uppercase;transition:color 0.2s;white-space:nowrap';
+        nameEl.textContent = inst.label;
+
+        var muteBtn = document.createElement('button');
+        muteBtn.style.cssText = 'width:18px;height:18px;border-radius:50%;border:1px solid '+inst.color+';background:'+inst.color+'20;color:'+inst.color+';font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0';
+        muteBtn.textContent = '−';
+
+        var gridEl = document.createElement('div');
+        gridEl.style.cssText = 'display:grid;grid-template-columns:repeat('+section.steps+',1fr);gap:3px;opacity:1;transition:opacity 0.2s';
+
+        inst.beats.forEach(function(on, i) {
+          var cell = document.createElement('div');
+          var isGS = groupStarts.has(i);
+          var isAcc = inst.accent[i];
+          var bg = on ? (isAcc ? inst.color : inst.color+'80') : (isGS ? '#f0fafa' : '#f3f3f3');
+          cell.style.cssText = 'aspect-ratio:1;border-radius:2px;transition:all 0.07s ease;background:'+bg+(isGS&&!on?';outline:1px solid '+inst.color+'30':'');
+          gridEl.appendChild(cell);
+          cellRefs[key].push(cell);
+        });
+
+        muteBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          muted[key] = !muted[key];
+          var m = muted[key];
+          muteBtn.textContent = m ? '+' : '−';
+          muteBtn.style.border = '1px solid '+(m ? '#ddd' : inst.color);
+          muteBtn.style.background = m ? '#f5f5f5' : inst.color+'20';
+          muteBtn.style.color = m ? '#bbb' : inst.color;
+          nameEl.style.color = m ? '#ddd' : '#aaa';
+          gridEl.style.opacity = m ? '0.15' : '1';
+        });
+
+        labelCell.appendChild(nameEl);
+        labelCell.appendChild(muteBtn);
+        row.appendChild(labelCell);
+        row.appendChild(gridEl);
+        wrapper.appendChild(row);
+      });
+
+      // Grouping bar
+      var groupBarGrid = document.createElement('div');
+      groupBarGrid.style.cssText = 'display:grid;grid-template-columns:64px 1fr;gap:12px;margin-top:8px;margin-bottom:4px';
+      groupBarGrid.appendChild(document.createElement('div'));
+      var groupBarRow = document.createElement('div');
+      groupBarRow.style.cssText = 'display:flex;align-items:center;gap:4px';
+      var half = Math.ceil(section.grouping.length/2);
+      section.grouping.slice(0, half).forEach(function(g, i) {
+        var chunk = document.createElement('div');
+        chunk.style.cssText = 'display:flex;align-items:center;gap:3px';
+        var bar = document.createElement('div');
+        var alpha = i%3===0 ? '60' : i%3===1 ? '35' : '20';
+        bar.style.cssText = 'height:5px;border-radius:2px;width:'+(g*10)+'px;background:'+TEAL+alpha;
+        var num = document.createElement('span');
+        num.style.cssText = 'font-size:9px;font-family:\'Space Mono\',monospace;color:#bbb';
+        num.textContent = g;
+        chunk.appendChild(bar);
+        chunk.appendChild(num);
+        if (i < half-1) {
+          var plus = document.createElement('span');
+          plus.style.cssText = 'font-size:9px;color:#ddd';
+          plus.textContent = '+';
+          chunk.appendChild(plus);
+        }
+        groupBarRow.appendChild(chunk);
+      });
+      groupBarGrid.appendChild(groupBarRow);
+      wrapper.appendChild(groupBarGrid);
+
+      // Controls
+      var controls = document.createElement('div');
+      controls.style.cssText = 'display:flex;align-items:center;justify-content:space-between;margin-top:8px';
+
+      var playBtn = document.createElement('button');
+      playBtn.style.cssText = 'width:44px;height:44px;border-radius:50%;border:2px solid #ddd;background:white;color:'+TEAL+';cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0';
+      playBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11" fill="currentColor"/></svg>';
+
+      var bpmControls = document.createElement('div');
+      bpmControls.style.cssText = 'display:flex;align-items:center;gap:8px';
+      var bpmMinus = document.createElement('button');
+      bpmMinus.style.cssText = 'width:22px;height:22px;border-radius:50%;border:1px solid #e8e8e8;background:white;color:#aaa;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center';
+      bpmMinus.textContent = '−';
+      var bpmDisplay = document.createElement('span');
+      bpmDisplay.style.cssText = 'font-size:11px;font-family:\'Space Mono\',monospace;color:'+TEAL+';width:50px;text-align:center';
+      bpmDisplay.textContent = bpm+' BPM';
+      var bpmPlus = document.createElement('button');
+      bpmPlus.style.cssText = 'width:22px;height:22px;border-radius:50%;border:1px solid #e8e8e8;background:white;color:#aaa;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center';
+      bpmPlus.textContent = '+';
+      bpmControls.appendChild(bpmMinus);
+      bpmControls.appendChild(bpmDisplay);
+      bpmControls.appendChild(bpmPlus);
+      controls.appendChild(playBtn);
+      controls.appendChild(bpmControls);
+      wrapper.appendChild(controls);
+      container.appendChild(wrapper);
+
+      function updateCell(key, i, isActive) {
+        var cell = cellRefs[key][i];
+        var inst = section.instruments[key];
+        var on = inst.beats[i];
+        var isAcc = inst.accent[i];
+        var isGS = groupStarts.has(i);
+        if (isActive && !muted[key]) {
+          cell.style.background = on ? '#fff' : inst.color+'25';
+          cell.style.boxShadow = on ? '0 0 8px '+inst.color+'90' : 'none';
+          cell.style.transform = on ? 'scale(1.2)' : 'scale(1)';
+          cell.style.outline = 'none';
+        } else {
+          cell.style.background = on ? (isAcc ? inst.color : inst.color+'80') : (isGS ? '#f0fafa' : '#f3f3f3');
+          cell.style.boxShadow = 'none';
+          cell.style.transform = 'scale(1)';
+          cell.style.outline = isGS && !on ? '1px solid '+inst.color+'30' : 'none';
+        }
+      }
+
+      function advanceStep(s) {
+        if (step >= 0) keys.forEach(function(k){ updateCell(k, step, false); });
+        step = s;
+        keys.forEach(function(k){ updateCell(k, step, true); });
+      }
+
+      function doStop() {
+        clearInterval(timer);
+        if (step >= 0) keys.forEach(function(k){ updateCell(k, step, false); });
+        step = -1; stepVal = 0; playing = false;
+        playBtn.style.border = '2px solid #ddd';
+        playBtn.style.background = 'white';
+        playBtn.style.color = TEAL;
+        playBtn.style.boxShadow = 'none';
+        playBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11" fill="currentColor"/></svg>';
+        if (stopCurrentSection === doStop) stopCurrentSection = null;
+      }
+
+      function doStart() {
+        if (window.ytAmbient) { window.ytAmbient.pauseVideo(); document.getElementById('ambient-btn').classList.remove('playing'); }
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        var last = audioCtx.currentTime;
+        var gains  = [0.9,0.6,0.4,0.8,0.5];
+        var gainsLo= [0.45,0.3,0.2,0.4,0.25];
+        timer = setInterval(function() {
+          var now = audioCtx.currentTime, sd = (60/bpm)/4;
+          if (now >= last + sd) {
+            last += sd;
+            var s = stepVal;
+            advanceStep(s);
+            keys.forEach(function(key, ki) {
+              if (muted[key]) return;
+              var inst = section.instruments[key];
+              if (!inst.beats[s]) return;
+              var g = inst.accent[s] ? (gains[ki]||0.5) : (gainsLo[ki]||0.25);
+              if (key === 'guitar') playGuitarTone(audioCtx, inst.freq, g, now);
+              else playTone(audioCtx, inst.freq, g, now);
+            });
+            stepVal = (s+1) % section.steps;
+          }
+        }, 10);
+      }
+
+      playBtn.addEventListener('click', function() {
+        if (playing) {
+          doStop();
+        } else {
+          if (stopCurrentSection) stopCurrentSection();
+          playing = true;
+          stopCurrentSection = doStop;
+          playBtn.style.border = '2px solid '+TEAL;
+          playBtn.style.background = TEAL;
+          playBtn.style.color = 'white';
+          playBtn.style.boxShadow = '0 0 14px '+TEAL+'40';
+          playBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 12 12"><rect x="1" y="1" width="10" height="10" fill="currentColor"/></svg>';
+          doStart();
+        }
+      });
+
+      bpmMinus.addEventListener('click', function() { bpm = Math.max(60, bpm-5); bpmDisplay.textContent = bpm+' BPM'; });
+      bpmPlus.addEventListener('click', function()  { bpm = Math.min(180, bpm+5); bpmDisplay.textContent = bpm+' BPM'; });
+    }
+
+    /* ── Init ─────────────────────────────────────────── */
+    buildPolyDemo(document.getElementById('poly-demo'));
+    var rsContainer = document.getElementById('rhythm-sections');
+    SECTIONS.forEach(function(section) {
+      buildRhythmSection(rsContainer, section);
+    });
+
+  })();
+  </script>
+</body>
+</html>

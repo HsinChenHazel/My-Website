@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>21 Letters Notes — Hazel Chen</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .notes-main {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 120px 24px 100px;
+    }
+
+    .notes-back {
+      font-size: 13px;
+      color: #999;
+      text-decoration: underline;
+      text-decoration-color: #ddd;
+      transition: color 0.2s ease, text-decoration-color 0.2s ease;
+      display: inline-block;
+      margin-bottom: 48px;
+    }
+
+    .notes-back:hover {
+      color: #111;
+      text-decoration-color: #111;
+    }
+
+    .notes-book-title {
+      font-size: 22px;
+      font-weight: normal;
+      font-family: Georgia, serif;
+      color: #111;
+      margin-bottom: 6px;
+      letter-spacing: 0;
+      line-height: 1.35;
+    }
+
+    .notes-book-author {
+      font-size: 14px;
+      color: #999;
+      margin-bottom: 48px;
+    }
+
+    .notes-section-label {
+      font-size: 11px;
+      color: #bbb;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .notes-placeholder {
+      font-size: 15px;
+      color: #999;
+      line-height: 1.75;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- Page transition -->
+  <div class="page-transition"></div>
+
+  <!-- Nav -->
+  <nav>
+    <a href="index.html" class="nav-logo">Hazel Chen</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="music.html">Music</a></li>
+    </ul>
+  </nav>
+
+  <main class="notes-main">
+
+    <a href="reading.html" class="notes-back">← Back to Bookshelf</a>
+
+    <h1 class="notes-book-title">21 Letters on Life and Its Challenges</h1>
+    <p class="notes-book-author">Charles Handy</p>
+
+    <p class="notes-section-label">My Notes</p>
+    <p class="notes-placeholder">Still reading — notes coming soon.</p>
+
+  </main>
+
+  <footer class="home-footer">
+    <a href="https://www.linkedin.com/in/hazel-chen-1628b7228/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="#" target="_blank" rel="noopener noreferrer">Resume</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

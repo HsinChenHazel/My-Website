@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food & Coffee — Hazel Chen</title>
+  <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <style>
+    .page *, .page *::before, .page *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    .page .page-back { margin-bottom: 48px; }
+    :root { --teal: #2ab5b5; --dark: #111111; --grey: #666; --border: #e8e8e8; }
+    body { font-family: Georgia, serif; color: var(--dark); min-height: 100vh; }
+
+    /* Nav handled by style.css */
+
+    /* Page */
+    .page { max-width: 640px; margin: 0 auto; padding: 120px 24px 100px; }
+    .tag { font-family: Georgia, serif; font-size: 11px; letter-spacing: 0.25em; color: var(--teal); text-transform: uppercase; margin-bottom: 12px; }
+    h1 { font-size: 22px; font-weight: normal; font-family: Georgia, serif; color: var(--dark); margin-bottom: 6px; letter-spacing: 0; }
+    .subtitle { font-size: 15px; color: #999; margin-bottom: 56px; }
+
+    /* Map */
+    #map { width: 100%; height: 480px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 40px; z-index: 0; overflow: hidden; }
+
+    /* Marker — circle with centred pin */
+    .custom-marker {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: white; border: 1px solid var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      box-shadow: 0 2px 8px rgba(42,181,181,0.25);
+    }
+    .custom-marker:hover { transform: scale(1.2); }
+    .custom-marker svg { width: 14px; height: 14px; display: block; margin: 0 auto; }
+
+    /* Popup */
+    .leaflet-popup-content-wrapper { border-radius: 8px !important; box-shadow: none !important; border: 1px solid var(--border) !important; padding: 0 !important; }
+    .leaflet-popup-content { margin: 0 !important; width: auto !important; }
+    .leaflet-popup-tip-container { display: none; }
+    .leaflet-popup-close-button { color: #aaa !important; font-size: 16px !important; top: 12px !important; right: 12px !important; }
+    .popup-inner {
+      padding: 18px 36px 16px 20px;
+      min-width: 220px; max-width: 260px;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+    }
+
+    .popup-inner:hover { background: none; }
+    .popup-type { font-family: Georgia, serif; font-size: 9px; letter-spacing: 0.18em; color: var(--teal); text-transform: uppercase; margin-bottom: 4px; }
+    .popup-name { font-size: 15px; color: var(--dark); margin-bottom: 6px; line-height: 1.3; transition: color 0.15s; }
+    .popup-love { font-size: 12px; color: var(--grey); line-height: 1.7; font-style: italic; margin-bottom: 10px; }
+    .popup-gmaps { font-family: Georgia, serif; font-size: 9px; color: var(--teal); letter-spacing: 0.08em; opacity: 0.8; }
+
+    /* Filters */
+    .filters { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .filter-label { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; letter-spacing: 0.1em; color: #bbb; text-transform: uppercase; }
+
+    /* Custom dropdown */
+    .custom-select { position: relative; display: inline-block; }
+    .custom-select-btn {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; letter-spacing: 0.08em;
+      padding: 7px 12px;
+      border: 1px solid var(--border); border-radius: 6px;
+      background: white; color: var(--dark);
+      cursor: pointer; white-space: nowrap;
+      transition: border-color 0.15s;
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+      min-width: 120px;
+      user-select: none;
+    }
+    .custom-select-btn:hover, .custom-select.open .custom-select-btn { border-color: var(--teal); }
+    .custom-select-arrow { width: 8px; height: 5px; flex-shrink: 0; transition: transform 0.15s; }
+    .custom-select.open .custom-select-arrow { transform: rotate(180deg); }
+    .custom-select-dropdown {
+      display: none;
+      position: absolute; top: calc(100% + 4px); left: 0;
+      background: white; border: 1px solid var(--border); border-radius: 6px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      overflow: hidden; z-index: 9999; min-width: 100%;
+    }
+    .custom-select.open .custom-select-dropdown { display: block; }
+    .custom-select-option {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; letter-spacing: 0.08em;
+      padding: 9px 14px; cursor: pointer; color: var(--dark);
+      transition: background 0.1s, color 0.1s;
+    }
+    .custom-select-option:hover { background: #f5fafa; color: var(--teal); }
+    .custom-select-option.selected { color: var(--teal); }
+
+    /* Cards */
+    .cards-scroll { overflow-x: auto; overflow-y: visible; margin: 0 -24px; padding: 4px 24px 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .cards-scroll::-webkit-scrollbar { display: none; }
+    .cards { display: flex; gap: 16px; width: max-content; }
+
+    .card {
+      width: 200px; min-height: 160px;
+      background: white; border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px 20px 16px;
+      cursor: pointer; flex-shrink: 0;
+      display: flex; flex-direction: column;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      text-decoration: none; color: inherit;
+    }
+    .card:hover { border-color: var(--teal); box-shadow: 0 4px 16px rgba(42,181,181,0.14); transform: translateY(-2px); }
+    .card.hidden { display: none; }
+
+    .card-type { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9px; letter-spacing: 0.16em; color: var(--teal); text-transform: uppercase; margin-bottom: 4px; }
+    .card-name { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; color: var(--dark); margin-bottom: 6px; line-height: 1.3; }
+    .card-love { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; color: #999; font-style: italic; line-height: 1.6; margin-bottom: 0; }
+
+    /* Pin location row — bottom of card */
+    .card-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 14px; }
+    .card-bottom-left { display: flex; align-items: center; gap: 5px; }
+    .card-bottom svg { width: 11px; height: 13px; flex-shrink: 0; }
+    .card-city { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9px; color: #ccc; letter-spacing: 0.08em; }
+    .card-rating { display: flex; gap: 3px; }
+    .heart { font-size: 13px; line-height: 1; }
+    .heart.filled { color: #e87d7d; }
+    .heart.empty  { color: #e8e8e8; }
+
+    .subpage-title {
+      font-size: 22px;
+      font-weight: normal;
+      font-family: Georgia, serif;
+      color: #111;
+      margin-bottom: 6px;
+      letter-spacing: 0;
+    }
+
+    .subpage-subtitle {
+      font-size: 16px;
+      color: #999;
+      margin-bottom: 56px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- Page transition -->
+  <div class="page-transition"></div>
+
+  <!-- Nav -->
+  <nav>
+    <a href="index.html" class="nav-logo">Hazel Chen</a>
+  </nav>
+
+  <div class="page">
+    <a href="index.html" class="page-back">← back to home</a>
+
+    <h1 class="subpage-title">Places I keep coming back to</h1>
+    <p class="subpage-subtitle">A small map of spots I love — mostly in Sydney. Coffee, food, things worth a detour.</p>
+
+    <div id="map"></div>
+
+    <div class="filters">
+      <div class="custom-select" id="select-city">
+        <div class="custom-select-btn" id="select-city-btn">
+          <span id="select-city-label">All cities</span>
+          <svg class="custom-select-arrow" viewBox="0 0 8 5" fill="none"><path d="M1 1l3 3 3-3" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="custom-select-dropdown" id="select-city-dropdown">
+          <div class="custom-select-option selected" data-value="all">All cities</div>
+          <div class="custom-select-option" data-value="Sydney">Sydney</div>
+        </div>
+      </div>
+
+      <div class="custom-select" id="select-cuisine">
+        <div class="custom-select-btn" id="select-cuisine-btn">
+          <span id="select-cuisine-label">All cuisines</span>
+          <svg class="custom-select-arrow" viewBox="0 0 8 5" fill="none"><path d="M1 1l3 3 3-3" stroke="#aaa" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="custom-select-dropdown" id="select-cuisine-dropdown">
+          <div class="custom-select-option selected" data-value="all">All cuisines</div>
+          <div class="custom-select-option" data-value="Bakery">Bakery</div>
+          <div class="custom-select-option" data-value="Coffee">Coffee</div>
+          <div class="custom-select-option" data-value="French Basque">French Basque</div>
+          <div class="custom-select-option" data-value="Gelato">Gelato</div>
+          <div class="custom-select-option" data-value="Middle Eastern">Middle Eastern</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards-scroll">
+      <div class="cards" id="place-cards"></div>
+    </div>
+  </div>
+
+  <footer class="home-footer">
+    <a href="https://www.linkedin.com/in/hazel-chen-1628b7228/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="#" target="_blank" rel="noopener noreferrer">Resume</a>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+
+      const PIN_SVG = `<svg viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 0C4.24 0 2 2.24 2 5c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="#2ab5b5"/>
+      </svg>`;
+
+      const gmapsUrl = id => `https://www.google.com/maps/place/?q=place_id:${id}`;
+
+      const PLACES = [
+        { id:0, name:"Flour and Stone", cuisine:"Bakery",        city:"Sydney", lat:-33.8736, lng:151.2154, love:"Blueberry scone",                                              rating:4, placeId:"ChIJmxHxbxSuEmsRO46iD58uWdU" },
+        { id:1, name:"Ezra",            cuisine:"Middle Eastern", city:"Sydney", lat:-33.8745, lng:151.2240, love:"Jerusalem bagel, hazelnut muhammara, ikra, potato kugel",       rating:4, placeId:"ChIJdcsDcZCvEmsRvbsnrgNrUGw" },
+        { id:2, name:"Cow & The Moon",  cuisine:"Gelato",        city:"Sydney", lat:-33.8989, lng:151.1720, love:"Raspberry cheesecake gelato",                                  rating:3, placeId:"ChIJxeF68ziwEmsREIyGerkMhOE" },
+        { id:3, name:"Deux Fr\u00e8res",cuisine:"French Basque", city:"Sydney", lat:-33.8624, lng:151.2108, love:"Vinegar & olive oil",                                          rating:3, placeId:"ChIJ4c9H4LCvEmsRh7jks6UZeH4" },
+        { id:4, name:"Beta",            cuisine:"Coffee",        city:"Sydney", lat:-33.8859, lng:151.2077, love:"",                                                   rating:3, placeId:"ChIJTdOcfACvEmsRaOwUBf8ZlNQ" },
+        { id:5, name:"Ratio",           cuisine:"Coffee",        city:"Sydney", lat:-33.8265, lng:151.1999, love:"",                                                   rating:4, placeId:"ChIJ4yu-nQGvEmsRQkI7QbG9r9U" },
+      ];
+
+      // ── Map ──
+      const map = L.map('map', { center:[-33.872, 151.205], zoom:13, scrollWheelZoom:true });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
+      }).addTo(map);
+
+      const markers = {};
+
+      PLACES.forEach(place => {
+        // iconAnchor: bottom-centre of the 36px circle = [18,18], but pin visual bottom = 18+9=27
+        const icon = L.divIcon({
+          html: `<div class="custom-marker">${PIN_SVG}</div>`,
+          className: '',
+          iconSize: [36, 36],
+          iconAnchor: [18, 18],   // centred on coordinate (circle, not pin tip)
+          popupAnchor: [0, -22],
+        });
+
+        const url = gmapsUrl(place.placeId);
+        const marker = L.marker([place.lat, place.lng], { icon })
+          .addTo(map)
+          .bindPopup(`
+            <a class="popup-inner" href="${url}" target="_blank" rel="noopener">
+              <div class="popup-type">${place.cuisine}</div>
+              <div class="popup-name">${place.name}</div>
+              <div class="popup-love">\u21b3 ${place.love}</div>
+              <div class="popup-gmaps">Open in Google Maps \u2197</div>
+            </a>
+          `, { closeButton:true, maxWidth:280 });
+
+        markers[place.id] = marker;
+        let closeTimer = null;
+        marker.on('mouseover', () => {
+          if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+          marker.openPopup();
+        });
+        marker.on('mouseout', () => {
+          closeTimer = setTimeout(() => marker.closePopup(), 300);
+        });
+        // keep open if mouse enters popup
+        marker.on('popupopen', () => {
+          highlightCard(place.id);
+          const popupEl = marker.getPopup().getElement();
+          if (popupEl) {
+            popupEl.addEventListener('mouseenter', () => {
+              if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+            });
+            popupEl.addEventListener('mouseleave', () => {
+              closeTimer = setTimeout(() => marker.closePopup(), 200);
+            });
+          }
+        });
+        marker.on('popupclose', () => unhighlightCards());
+      });
+
+      // ── Cards ──
+      const cardsEl = document.getElementById('place-cards');
+
+      PLACES.forEach(place => {
+        const card = document.createElement('a');
+        card.className = 'card';
+        card.id = `card-${place.id}`;
+        card.dataset.city = place.city;
+        card.dataset.cuisine = place.cuisine;
+        card.href = gmapsUrl(place.placeId);
+        card.target = '_blank';
+        card.rel = 'noopener';
+        const hearts = Array.from({length:5}, (_,i) =>
+          `<span class="heart ${i < place.rating ? 'filled' : 'empty'}">♥</span>`
+        ).join('');
+        card.innerHTML = `
+          <div class="card-type">${place.cuisine}</div>
+          <div class="card-name">${place.name}</div>
+          ${place.love ? `<div class="card-love">\u21b3 ${place.love}</div>` : ''}
+          <div class="card-bottom">
+            <div class="card-bottom-left">
+              ${PIN_SVG}
+              <span class="card-city">${place.city}</span>
+            </div>
+            <div class="card-rating">${hearts}</div>
+          </div>`;
+
+        // hover on card → open popup on map
+        card.addEventListener('mouseenter', () => {
+          map.setView([place.lat, place.lng], map.getZoom(), { animate: false });
+          markers[place.id].openPopup();
+        });
+        card.addEventListener('mouseleave', () => {
+          markers[place.id].closePopup();
+        });
+
+        // click opens Google Maps (href handles it), but also fly map there
+        card.addEventListener('click', (e) => {
+          // let the link open naturally (new tab), just pan map too
+          map.setView([place.lat, place.lng], 15, { animate: true });
+        });
+
+        cardsEl.appendChild(card);
+      });
+
+      // ── Filters ──
+      let activeCity = 'all', activeCuisine = 'all';
+      function applyFilters() {
+        PLACES.forEach(p => {
+          const card = document.getElementById(`card-${p.id}`);
+          const show = (activeCity === 'all' || p.city === activeCity) &&
+                       (activeCuisine === 'all' || p.cuisine === activeCuisine);
+          card.classList.toggle('hidden', !show);
+          show
+            ? (!map.hasLayer(markers[p.id]) && markers[p.id].addTo(map))
+            : ( map.hasLayer(markers[p.id]) && map.removeLayer(markers[p.id]));
+        });
+      }
+      // Custom dropdowns
+      function setupDropdown(wrapperId, labelId, onSelect) {
+        const wrapper = document.getElementById(wrapperId);
+        const btn = wrapper.querySelector('.custom-select-btn');
+        const label = document.getElementById(labelId);
+        const options = wrapper.querySelectorAll('.custom-select-option');
+
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          document.querySelectorAll('.custom-select.open').forEach(el => { if (el !== wrapper) el.classList.remove('open'); });
+          wrapper.classList.toggle('open');
+        });
+        options.forEach(opt => {
+          opt.addEventListener('click', () => {
+            options.forEach(o => o.classList.remove('selected'));
+            opt.classList.add('selected');
+            label.textContent = opt.textContent;
+            wrapper.classList.remove('open');
+            onSelect(opt.dataset.value);
+          });
+        });
+      }
+
+      setupDropdown('select-city',    'select-city-label',    val => { activeCity = val; applyFilters(); });
+      setupDropdown('select-cuisine', 'select-cuisine-label', val => { activeCuisine = val; applyFilters(); });
+
+      document.addEventListener('click', () => {
+        document.querySelectorAll('.custom-select.open').forEach(el => el.classList.remove('open'));
+      });
+
+      function highlightCard(id) {
+        unhighlightCards();
+        const card = document.getElementById(`card-${id}`);
+        if (card) { card.style.borderColor = 'var(--teal)'; card.style.boxShadow = '0 4px 16px rgba(42,181,181,0.2)'; }
+      }
+      function unhighlightCards() {
+        document.querySelectorAll('.card').forEach(c => { c.style.borderColor = ''; c.style.boxShadow = ''; });
+      }
+
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
