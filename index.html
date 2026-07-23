@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hazel Chen — Product Designer</title>
   <meta name="description" content="Product designer focused on creating experiences that reduce friction and help people do what they came to do." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -19,33 +22,166 @@
   <!-- Nav -->
   <nav>
     <a href="index.html" class="nav-logo">Hazel Chen</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+    </ul>
   </nav>
 
-  <main class="home-main">
+  <main>
 
-    <h1 class="home-name">Hazel Chen</h1>
-
-    <div class="home-bio">
-      <p>I'm a <a href="story.html">product designer and builder</a>. I've worked with early-stage startups and spent time as a full-stack developer in banking. I don't just speak both design and engineering — I build too.</p>
-      <p>My passion is untangling complex systems into experiences that feel simple and inevitable. Iterate fast, validate faster.</p>
-      <p>I believe nothing is too hard to learn, it just takes time and the right approach. I'm a <a href="reading.html">reader</a>, amateur singer, <a href="music.html">music explorer</a>, <a href="food.html">food & coffee lover</a>, and lowkey outdoor adventurer.</p>
+    <div class="home-intro">
+      <div class="home-name-row">
+        <iframe src="hazel_animated.html" class="home-portrait" scrolling="no" frameborder="0" aria-hidden="true"></iframe>
+      </div>
+      <div class="home-bio">
+        <p>I'm a <a href="story.html">product designer and builder</a>. I've worked with early-stage startups and spent time as a full-stack developer in banking. I don't just speak both design and engineering — I build too.</p>
+        <p>My passion is untangling complex systems into experiences that feel simple and inevitable. Iterate fast, validate faster.</p>
+        <p>I believe nothing is too hard to learn, it just takes time and the right approach. I'm a <a href="reading.html">reader</a>, amateur singer, <a href="music.html">music explorer</a>, <a href="food.html">food & coffee lover</a>, and lowkey outdoor adventurer.</p>
+      </div>
     </div>
 
     <section class="home-work" id="work">
-      <p class="home-work-label">Selected Work</p>
-      <div class="work-rows">
-        <a href="https://www.notion.so/From-Sign-Ups-to-Starters-Activating-Micro-Creators-Through-AI-Guided-Monetisation-312bbc07ca41809081a8dc2ea811e52d" target="_blank" class="work-row">
-          <span class="work-row-name">From Sign-Ups to Starters</span>
-          <span class="work-row-desc">AI-guided monetisation · Portaly</span>
-        </a>
-        <a href="https://www.notion.so/From-Who-Owes-What-to-Total-Clarity-Designing-Low-Friction-Expense-Tracking-for-Housemates-315bbc07ca4180ae8294e9a7097c5744?source=copy_link" target="_blank" class="work-row">
-          <span class="work-row-name">From "Who Owes What?" to Total Clarity</span>
-          <span class="work-row-desc">Shared expenses · HouseFund</span>
-        </a>
-        <a href="https://www.notion.so/Co-PR-Mobile-App-Home-Page-Redesign-Case-Study-23abbc07ca41804d8357f82638e60603?source=copy_link" target="_blank" class="work-row">
-          <span class="work-row-name">From Visa Confusion to Clear Next Steps</span>
-          <span class="work-row-desc">PR planning · Co-PR</span>
-        </a>
+      <div class="home-work-inner">
+<div class="work-cards">
+
+          <!-- Portaly (hidden) -->
+          <!--
+          <a href="portaly.html" class="work-card">
+            <div class="work-card-inner">
+              <div class="work-card-face work-card-front">
+                <div class="card-img-center">
+                  <img src="images/portaly-cover.png" alt="" />
+                </div>
+                <div class="card-front-info">
+                  <span class="card-front-name">Portaly</span>
+                  <div class="card-front-tags">
+                    <span class="card-tag">Web</span>
+                    <span class="card-tag">UX Research</span>
+                    <span class="card-tag">Onboarding</span>
+                  </div>
+                </div>
+              </div>
+              <div class="work-card-face work-card-back">
+                <div class="card-back-content">
+                  <p class="card-back-co">Portaly</p>
+                  <h2 class="card-back-title">From Sign-Ups to Starters</h2>
+                  <p class="card-back-desc">AI-guided onboarding that moved micro-creators from passive sign-up to their first monetisation action — increasing activation & retention.</p>
+                  <p class="card-back-role">Lead UX Designer</p>
+                </div>
+              </div>
+            </div>
+          </a>
+          -->
+
+          <!-- Co-PR -->
+          <a href="copr.html" class="work-card work-card--navy">
+            <div class="work-card-inner">
+              <div class="work-card-face work-card-front">
+                <div class="card-img-center card-img-center--copr">
+                  <img src="images/copr-cover.png" alt="" />
+                </div>
+                <div class="card-front-info">
+                  <span class="card-front-name">Co-PR</span>
+                  <div class="card-front-tags">
+                    <span class="card-tag">Mobile</span>
+                    <span class="card-tag">IA Redesign</span>
+                    <span class="card-tag">+20% Satisfaction</span>
+                  </div>
+                </div>
+              </div>
+              <div class="work-card-face work-card-back">
+                <div class="card-back-content">
+                  <p class="card-back-co">Co-PR</p>
+                  <h2 class="card-back-title">Navigating Australian PR, Simplified</h2>
+                  <p class="card-back-desc">IA redesign that increased user satisfaction by 20% — helping Australians track visa and PR applications with clarity.</p>
+                  <p class="card-back-role">Mobile UI Designer</p>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Stylemate -->
+          <a href="stylemate.html" class="work-card">
+            <div class="work-card-inner">
+              <div class="work-card-face work-card-front">
+                <div class="card-img-center card-img-center--stylemate">
+                  <img src="images/stylemate-cover.png" alt="" />
+                </div>
+                <div class="card-front-info">
+                  <span class="card-front-name">Stylemate</span>
+                  <div class="card-front-tags">
+                    <span class="card-tag">iOS</span>
+                    <span class="card-tag">UI/UX + Dev</span>
+                    <span class="card-tag">AI · Sustainability</span>
+                  </div>
+                </div>
+              </div>
+              <div class="work-card-face work-card-back">
+                <div class="card-back-content">
+                  <p class="card-back-co">Apple Foundation Program · UTS</p>
+                  <h2 class="card-back-title">Wear More, Waste Less</h2>
+                  <p class="card-back-desc">An AI-powered iOS app that helps users style their existing wardrobe — reducing fashion waste through smarter outfit choices.</p>
+                  <p class="card-back-role">Product Designer & Developer</p>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- HouseFund -->
+          <a href="housefund.html" class="work-card work-card--green">
+            <div class="work-card-inner">
+              <div class="work-card-face work-card-front">
+                <div class="card-img-center card-img-center--housefund">
+                  <img src="images/housefund-cover.avif" alt="" />
+                </div>
+                <div class="card-front-info">
+                  <span class="card-front-name">HouseFund</span>
+                  <div class="card-front-tags">
+                    <span class="card-tag">Mobile</span>
+                    <span class="card-tag">Design System</span>
+                    <span class="card-tag">0→1 in 3 weeks</span>
+                  </div>
+                </div>
+              </div>
+              <div class="work-card-face work-card-back">
+                <div class="card-back-content">
+                  <p class="card-back-co">HouseFund</p>
+                  <h2 class="card-back-title">From "Who Owes What?" to Total Clarity</h2>
+                  <p class="card-back-desc">Built a design system and delivered a complete mobile product from zero — in 3 weeks.</p>
+                  <p class="card-back-role">UX Designer</p>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- TrEEE -->
+          <div class="work-card">
+            <div class="work-card-inner">
+              <div class="work-card-face work-card-front">
+                <div class="card-img-center card-img-center--treee">
+                  <img src="images/treee-cover.png" alt="" />
+                </div>
+                <div class="card-front-info">
+                  <span class="card-front-name">TrEEE</span>
+                  <div class="card-front-tags">
+                    <span class="card-tag">Mobile</span>
+                    <span class="card-tag">Design + Code</span>
+                    <span class="card-tag">In Progress</span>
+                  </div>
+                </div>
+              </div>
+              <div class="work-card-face work-card-back">
+                <div class="card-back-content">
+                  <p class="card-back-co">Side Project · In Progress</p>
+                  <h2 class="card-back-title">Bible Reading, Reimagined</h2>
+                  <p class="card-back-desc">Designed and built from scratch — currently finishing development. Case study coming soon.</p>
+                  <p class="card-back-role">Product Designer & Developer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 

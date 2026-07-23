@@ -4,11 +4,183 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — Hazel Chen</title>
-  <meta name="description" content="Hazel Chen is a product designer focused on experiences that reduce friction." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .ab-main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 120px 24px 100px;
+    }
+
+    .ab-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #b09070;
+      margin-bottom: 20px;
+    }
+
+    .ab-headline {
+      font-family: Georgia, serif;
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: normal;
+      line-height: 1.25;
+      color: #3a2210;
+      letter-spacing: -0.02em;
+      margin-bottom: 80px;
+    }
+
+    /* ——— Traits ——— */
+    .ab-traits {
+      margin-bottom: 80px;
+    }
+
+    .ab-trait {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 20px;
+      padding: 28px 0;
+      border-top: 1px solid #e8ddd0;
+    }
+    .ab-trait:last-child { border-bottom: 1px solid #e8ddd0; }
+
+    .ab-trait-num {
+      font-family: Georgia, serif;
+      font-size: 13px;
+      color: #c8b49a;
+      padding-top: 3px;
+    }
+
+    .ab-trait-title {
+      font-family: Georgia, serif;
+      font-size: 19px;
+      font-weight: normal;
+      color: #3a2210;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .ab-trait-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #777;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* ——— Section label ——— */
+    .ab-section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #b09070;
+      margin-bottom: 24px;
+    }
+
+    /* ——— Tools ——— */
+    .ab-tools {
+      margin-bottom: 64px;
+    }
+
+    .ab-tool-groups {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 48px;
+    }
+
+    .ab-tool-group-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: #3a2210;
+      margin-bottom: 10px;
+    }
+
+    .ab-tool-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .ab-chip {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: #7a5c3a;
+      padding: 4px 10px;
+      border: 1px solid #d4c0a8;
+      border-radius: 100px;
+      background: #f5ede0;
+    }
+
+    /* ——— Currently ——— */
+    .ab-currently {
+      margin-bottom: 64px;
+      padding-top: 48px;
+      border-top: 1px solid #e8ddd0;
+    }
+
+    .ab-currently-items {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .ab-currently-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .ab-currently-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #c8b49a;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    /* ——— Elsewhere ——— */
+    .ab-elsewhere {
+      padding-top: 48px;
+      border-top: 1px solid #e8ddd0;
+    }
+
+    .ab-elsewhere-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .ab-elsewhere-link {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #3a2210;
+      text-decoration: none;
+      padding: 9px 18px;
+      border: 1.5px solid #c8b49a;
+      border-radius: 100px;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .ab-elsewhere-link:hover {
+      background: #f5ede0;
+      border-color: #b09070;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -19,133 +191,121 @@
   <nav>
     <a href="index.html" class="nav-logo">Hazel Chen</a>
     <ul class="nav-links">
-      <li><a href="index.html#work">Work</a></li>
-      <li><a href="music.html">Music</a></li>
+      <li><a href="index.html">Work</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
 
-  <main>
-    <section class="about-hero">
-      <div class="container">
-        <span class="label">About</span>
-        <h1>I design products that get out of people's way.</h1>
-        <p class="cs-subtitle">Currently looking for junior to mid-level product design roles where I can help build things that matter.</p>
+  <main class="ab-main">
+
+    <p class="ab-eyebrow">About</p>
+    <h1 class="ab-headline">I design, build, and ship —<br>then do it again, faster.</h1>
+
+    <!-- 3 core traits -->
+    <div class="ab-traits">
+      <div class="ab-trait">
+        <span class="ab-trait-num">01</span>
+        <div>
+          <h2 class="ab-trait-title">End-to-end execution</h2>
+          <p class="ab-trait-desc">I design, prototype, test, and ship code. I know how to talk to engineers because I've been one — I ask the right technical questions and push back with context.</p>
+        </div>
       </div>
-    </section>
-
-    <section style="padding-bottom: var(--space-3xl);">
-      <div class="container">
-
-        <div class="about-grid">
-          <!-- Bio -->
-          <div class="reveal">
-            <p class="about-section-title">Who I am</p>
-            <div class="about-bio">
-              <p>I'm a product designer with a focus on reducing friction — in interfaces, in decision-making, and in how teams think about design problems.</p>
-              <p>My process starts with understanding behaviour. I spend time in research not just to validate ideas, but to uncover what people are actually trying to do. From there, I work in structured iterations — from rough flows to high-fidelity prototypes, testing each step against real feedback.</p>
-              <p>I've designed across creator monetisation platforms and shared living tools: problems that sit at the intersection of psychology, coordination, and product strategy. What I've learned: the best design rarely adds. It clarifies.</p>
-            </div>
-          </div>
-
-          <!-- Skills -->
-          <div class="reveal reveal-delay-1">
-            <p class="about-section-title">Skills</p>
-            <ul class="skills-list">
-              <li class="skill-item">
-                <span>User Research &amp; Interviews</span>
-                <span class="skill-category">Discovery</span>
-              </li>
-              <li class="skill-item">
-                <span>UX / UI Design</span>
-                <span class="skill-category">Design</span>
-              </li>
-              <li class="skill-item">
-                <span>Interaction Design</span>
-                <span class="skill-category">Design</span>
-              </li>
-              <li class="skill-item">
-                <span>Usability Testing</span>
-                <span class="skill-category">Validation</span>
-              </li>
-              <li class="skill-item">
-                <span>Information Architecture</span>
-                <span class="skill-category">Structure</span>
-              </li>
-              <li class="skill-item">
-                <span>Design Systems</span>
-                <span class="skill-category">Systems</span>
-              </li>
-              <li class="skill-item">
-                <span>Prototyping</span>
-                <span class="skill-category">Craft</span>
-              </li>
-              <li class="skill-item">
-                <span>Workshop Facilitation</span>
-                <span class="skill-category">Collaboration</span>
-              </li>
-            </ul>
-
-            <p class="about-section-title" style="margin-top: 44px;">Tools</p>
-            <div class="tools-grid">
-              <span class="tool-pill">Figma</span>
-              <span class="tool-pill">FigJam</span>
-              <span class="tool-pill">Miro</span>
-              <span class="tool-pill">Maze</span>
-              <span class="tool-pill">Dovetail</span>
-              <span class="tool-pill">Notion</span>
-              <span class="tool-pill">Loom</span>
-            </div>
-          </div>
+      <div class="ab-trait">
+        <span class="ab-trait-num">02</span>
+        <div>
+          <h2 class="ab-trait-title">Fast, iterative output</h2>
+          <p class="ab-trait-desc">I move quickly without cutting corners. I produce work, collect feedback, and adapt — whether that's a flow, a component, or a full product from zero in 3 weeks.</p>
         </div>
-
-        <!-- Currently -->
-        <div class="reveal" style="padding: var(--space-xl) 0; border-top: 1px solid var(--border);">
-          <p class="about-section-title">Currently</p>
-          <div class="callout">
-            <p>Open to junior to mid-level product design roles — preferably at product-led companies working on consumer or B2B tools.</p>
-          </div>
-          <div style="display:flex; gap: 12px; margin-top: 20px;">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;color:var(--text);text-decoration:none;padding:10px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-2);transition:background 0.2s ease, color 0.2s ease;">
-              Say hello on LinkedIn
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M1.5 10.5l8-8M9.5 2.5H4M9.5 2.5v5.5"/>
-              </svg>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;color:var(--text);text-decoration:none;padding:10px 18px;border:1px solid var(--border);border-radius:100px;background:var(--bg-2);transition:background 0.2s ease, color 0.2s ease;">
-              Download resume
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M1.5 10.5l8-8M9.5 2.5H4M9.5 2.5v5.5"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <span class="footer-name">Hazel Chen</span>
-        <div class="footer-links">
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-            LinkedIn
-            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M1.5 9.5l7-7M8.5 2.5H3M8.5 2.5v5.5"/>
-            </svg>
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            Resume
-            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M1.5 9.5l7-7M8.5 2.5H3M8.5 2.5v5.5"/>
-            </svg>
-          </a>
+      <div class="ab-trait">
+        <span class="ab-trait-num">03</span>
+        <div>
+          <h2 class="ab-trait-title">Driven to learn</h2>
+          <p class="ab-trait-desc">I'm genuinely passionate about this work. I pick up new tools, domains, and methods fast — and I hold myself accountable to actually finishing what I start.</p>
         </div>
-        <span class="footer-copy">© 2024 Hazel Chen</span>
       </div>
     </div>
+
+    <!-- Tools & Stack -->
+    <div class="ab-tools">
+      <p class="ab-section-label">Tools & Stack</p>
+      <div class="ab-tool-groups">
+        <div class="ab-tool-group">
+          <p class="ab-tool-group-label">Design & Research</p>
+          <div class="ab-tool-chips">
+            <span class="ab-chip">Figma</span>
+            <span class="ab-chip">FigJam</span>
+            <span class="ab-chip">Miro</span>
+            <span class="ab-chip">Mobbin</span>
+            <span class="ab-chip">Maze</span>
+          </div>
+        </div>
+        <div class="ab-tool-group">
+          <p class="ab-tool-group-label">Engineering</p>
+          <div class="ab-tool-chips">
+            <span class="ab-chip">React</span>
+            <span class="ab-chip">JavaScript</span>
+            <span class="ab-chip">HTML / CSS</span>
+            <span class="ab-chip">REST APIs</span>
+            <span class="ab-chip">SQL</span>
+            <span class="ab-chip">GitHub</span>
+          </div>
+        </div>
+        <div class="ab-tool-group">
+          <p class="ab-tool-group-label">AI-Assisted</p>
+          <div class="ab-tool-chips">
+            <span class="ab-chip">Claude Code</span>
+            <span class="ab-chip">Cursor</span>
+            <span class="ab-chip">Figma Make</span>
+          </div>
+        </div>
+        <div class="ab-tool-group">
+          <p class="ab-tool-group-label">Collaboration</p>
+          <div class="ab-tool-chips">
+            <span class="ab-chip">Agile / Scrum</span>
+            <span class="ab-chip">Linear</span>
+            <span class="ab-chip">Jira</span>
+            <span class="ab-chip">Notion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Currently -->
+    <div class="ab-currently">
+      <p class="ab-section-label">Currently</p>
+      <div class="ab-currently-items">
+        <div class="ab-currently-item">
+          <span class="ab-currently-dot"></span>
+          <span>Learning anatomy illustration</span>
+        </div>
+        <div class="ab-currently-item">
+          <span class="ab-currently-dot"></span>
+          <span>Shipping TrEEE — a Bible reading app I designed and built</span>
+        </div>
+        <div class="ab-currently-item">
+          <span class="ab-currently-dot"></span>
+          <span>Open to mobile-first product design roles</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Elsewhere -->
+    <div class="ab-elsewhere">
+      <p class="ab-section-label">Elsewhere</p>
+      <div class="ab-elsewhere-links">
+        <a href="reading.html" class="ab-elsewhere-link">Reading</a>
+        <a href="music.html" class="ab-elsewhere-link">Music</a>
+        <a href="food.html" class="ab-elsewhere-link">Food & Coffee</a>
+        <a href="story.html" class="ab-elsewhere-link">My Story</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="home-footer">
+    <a href="https://www.linkedin.com/in/hazel-chen-1628b7228/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="#" target="_blank" rel="noopener noreferrer">Resume</a>
   </footer>
 
   <script src="script.js"></script>

@@ -3,20 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HouseFund — Hazel Chen</title>
+  <title>[PROJECT NAME] — Hazel Chen</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* ═══════════════════════════════════════════
+       [PROJECT NAME] — IMMERSIVE CASE STUDY
+       Replace all --cs-* variables with project colors
+       ═══════════════════════════════════════════ */
+
     :root {
-      --cs-bg:     #fffdf8;
-      --cs-dark:   #182818;
-      --cs-accent: #2D6030;
-      --cs-mid:    #5EA863;
-      --cs-muted:  #5A6A58;
-      --cs-border: rgba(45, 96, 48, 0.13);
-      --cs-card:   rgba(255, 255, 255, 0.62);
+      --cs-bg:     #fffdf8;   /* page background */
+      --cs-dark:   #111;      /* deep dark */
+      --cs-accent: #444;      /* primary accent */
+      --cs-mid:    #888;      /* lighter accent */
+      --cs-muted:  #666;      /* body text */
+      --cs-border: rgba(0, 0, 0, 0.1);
+      --cs-card:   rgba(255, 255, 255, 0.55);
     }
 
     body {
@@ -26,8 +31,10 @@
       font-family: 'Inter', sans-serif;
     }
 
-    ::selection { background: rgba(45, 96, 48, 0.16); color: var(--cs-dark); }
+    /* Text selection matches accent */
+    ::selection { background: rgba(68, 68, 68, 0.15); color: var(--cs-dark); }
 
+    /* Cursor color override */
     .cursor-ring {
       background: var(--cs-accent) !important;
       animation: none !important;
@@ -35,6 +42,7 @@
     }
     body.hovering .cursor-ring { opacity: 0.35 !important; }
 
+    /* Directional hint */
     #csCursorHint {
       position: fixed; top: 0; left: 0;
       pointer-events: none; z-index: 10000;
@@ -62,7 +70,7 @@
     .cs-progress-fill {
       height: 100%; background: var(--cs-accent);
       transition: width 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-      width: 14.3%;
+      width: 20%;
     }
 
     /* ——— Slides ——— */
@@ -118,10 +126,12 @@
       color: var(--cs-muted); margin-bottom: 22px;
     }
     .cs-h1 {
+      font-family: 'Inter', sans-serif;
       font-size: clamp(48px, 6vw, 80px); font-weight: 300;
       letter-spacing: -0.03em; line-height: 1.0; color: var(--cs-dark);
     }
     .cs-h2 {
+      font-family: 'Inter', sans-serif;
       font-size: clamp(26px, 3.2vw, 44px); font-weight: 300;
       letter-spacing: -0.025em; line-height: 1.15; color: var(--cs-dark);
     }
@@ -131,11 +141,11 @@
       font-size: 11px; font-weight: 500; letter-spacing: 0.05em;
       text-transform: uppercase; color: var(--cs-bg);
       padding: 6px 14px; border-radius: 100px;
-      background: var(--cs-dark);
+      background: var(--cs-dark); border: 1px solid transparent;
     }
     .cs-ghost-btn {
       display: inline-flex; align-items: center; gap: 8px;
-      font-size: 14px; font-weight: 400;
+      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400;
       color: var(--cs-muted); background: transparent;
       padding: 13px 26px; border-radius: 100px;
       border: 1px solid var(--cs-border); text-decoration: none;
@@ -182,9 +192,9 @@
       color: rgba(255,255,255,0.45); text-decoration: line-through; flex: 1;
     }
     .cs-rf-arrow { color: var(--cs-mid); font-size: 15px; flex-shrink: 0; }
-    .cs-rf-to { font-size: 13px; font-weight: 600; font-style: italic; color: #fff; flex: 1; }
+    .cs-rf-to   { font-size: 13px; font-weight: 600; font-style: italic; color: #fff; flex: 1; }
 
-    /* ══════ SLIDES 3 & 4 — SOLUTION ══════ */
+    /* ══════ SLIDE 3 — SOLUTION ══════ */
     .s3-inner {
       max-width: 860px; width: 100%;
       display: flex; flex-direction: column; align-items: center;
@@ -196,6 +206,7 @@
     }
     .cs-feat { display: flex; flex-direction: column; align-items: center; gap: 20px; }
 
+    /* Phone frame — use for mobile app demos */
     .cs-phone-frame {
       width: clamp(140px, 20vh, 200px);
       aspect-ratio: 9 / 19.5;
@@ -203,61 +214,22 @@
       overflow: hidden; background: #000;
       box-shadow: 0 20px 60px rgba(0,0,0,0.18); flex-shrink: 0;
     }
-    .cs-phone-frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cs-phone-frame video,
+    .cs-phone-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Web screenshot — use for web/desktop products */
+    .cs-screen-frame {
+      width: 100%; border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--cs-border);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+    .cs-screen-frame img { width: 100%; display: block; }
 
     .cs-feat-body { text-align: center; width: 100%; }
     .cs-feat-name { font-size: 15px; font-weight: 500; color: var(--cs-dark); margin-bottom: 8px; }
     .cs-feat-desc { font-size: 13px; color: var(--cs-muted); line-height: 1.7; }
 
-    /* ══════ SLIDE 5 — DESIGN SYSTEM ══════ */
-    .s-ds-inner {
-      display: grid; grid-template-columns: 1fr 1.1fr;
-      gap: 72px; align-items: center;
-      max-width: 1020px; width: 100%;
-    }
-    .ds-swatches { display: flex; gap: 6px; margin: 20px 0 24px; }
-    .ds-chip { width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0; }
-    .ds-principles { display: flex; flex-wrap: wrap; gap: 8px; }
-    .ds-principle {
-      font-size: 12px; font-weight: 500; color: var(--cs-dark);
-      padding: 6px 13px; border-radius: 100px;
-      border: 1px solid var(--cs-border);
-      background: var(--cs-card); letter-spacing: 0.02em;
-    }
-    .ds-scroll-outer { position: relative; }
-    .ds-scroll-wrap {
-      max-height: clamp(240px, 32vh, 340px);
-      overflow-y: auto;
-      border-radius: 12px;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(45,96,48,0.2) transparent;
-    }
-    .ds-scroll-wrap::-webkit-scrollbar { width: 4px; }
-    .ds-scroll-wrap::-webkit-scrollbar-track { background: transparent; }
-    .ds-scroll-wrap::-webkit-scrollbar-thumb { background: rgba(45,96,48,0.2); border-radius: 4px; }
-    .ds-scroll-fade {
-      position: absolute; bottom: 22px; left: 0; right: 0;
-      height: 48px; pointer-events: none;
-      background: linear-gradient(transparent, var(--cs-bg));
-      border-radius: 0 0 12px 12px;
-    }
-    .ds-scroll-hint {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--cs-muted);
-      text-align: center; margin-top: 8px;
-    }
-    .ds-visual {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-    .ds-visual-img {
-      border-radius: 10px; overflow: hidden;
-      border: 1px solid var(--cs-border);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    }
-    .ds-visual-img img { width: 100%; display: block; }
-
-    /* ══════ SLIDE 6 — PROCESS ══════ */
+    /* ══════ SLIDE 4 — PROCESS ══════ */
     .s4-inner { max-width: 900px; width: 100%; }
 
     .cs-beats {
@@ -274,37 +246,26 @@
     .cs-beat-t { font-size: 15px; font-weight: 500; color: var(--cs-dark); margin-bottom: 10px; }
     .cs-beat-b { font-size: 13px; color: var(--cs-muted); line-height: 1.72; }
 
-    /* ══════ SLIDE 7 — OUTCOME ══════ */
+    /* ══════ SLIDE 5 — OUTCOME ══════ */
     .s5-inner { max-width: 680px; width: 100%; text-align: center; }
     .s5-sub { font-size: 15px; font-weight: 300; color: var(--cs-muted); line-height: 1.7; margin-bottom: 32px; }
     .s5-photos { display: flex; gap: 10px; justify-content: center; margin-bottom: 32px; }
-    .s5-photo-wrap {
-      width: 160px; height: 110px; border-radius: 10px; flex-shrink: 0;
-      background: var(--cs-card); border: 1px solid var(--cs-border);
-      overflow: hidden;
-    }
-    .s5-photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .s5-photo-placeholder {
-      width: 100%; height: 100%; display: flex;
-      align-items: center; justify-content: center;
-      font-size: 11px; color: var(--cs-muted);
-    }
+    .s5-photo { width: 160px; height: 110px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
     .s5-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
     /* ——— Responsive (tablet) ——— */
     @media (max-width: 860px) and (min-width: 769px) {
       .cs-slide { padding: 80px 32px 72px; }
       .s1-inner { grid-template-columns: 1fr; gap: 28px; }
-      .s1-visual { height: 280px; order: 2; }
+      .s1-visual { display: flex; height: 280px; order: 2; }
       .s3-grid  { grid-template-columns: 1fr; gap: 40px; }
       .cs-beats { grid-template-columns: 1fr; }
       .cs-stats { grid-template-columns: 1fr; }
       .cs-reframe { flex-direction: column; align-items: flex-start; }
       .cs-rf-from, .cs-rf-to { flex: unset; }
-      .s-ds-inner { grid-template-columns: 1fr; gap: 32px; }
     }
 
-    /* ——— Responsive (mobile) ——— */
+    /* ——— Responsive (mobile — scroll layout) ——— */
     @media (max-width: 768px) {
       body { overflow-y: auto !important; height: auto !important; }
       nav { background: var(--cs-bg) !important; border-bottom: 1px solid var(--cs-border) !important; }
@@ -318,7 +279,7 @@
       .cs-footer   { display: none; }
       #csCursorHint { display: none; }
       .s1-inner  { grid-template-columns: 1fr; gap: 28px; }
-      .s1-visual { height: 260px; order: 2; }
+      .s1-visual { display: flex; height: 260px; order: 2; }
       .s3-grid   { grid-template-columns: 1fr; gap: 40px; }
       .cs-beats  { grid-template-columns: 1fr; }
       .cs-stats  { grid-template-columns: 1fr; }
@@ -327,10 +288,9 @@
       .s5-inner  { text-align: left; }
       .s5-btns   { justify-content: flex-start; }
       .s5-photos { flex-wrap: wrap; }
-      .s-ds-inner { grid-template-columns: 1fr; gap: 32px; }
     }
 
-    /* ——— Short viewport ——— */
+    /* ——— Responsive (short viewport — scroll layout) ——— */
     @media (max-height: 580px) and (min-width: 769px) {
       body { overflow-y: auto !important; height: auto !important; }
       nav { background: var(--cs-bg) !important; border-bottom: 1px solid var(--cs-border) !important; }
@@ -344,7 +304,7 @@
       .cs-footer   { display: none; }
     }
 
-    /* ——— Compact height ——— */
+    /* ——— Responsive (compact height) ——— */
     @media (max-height: 780px) and (min-width: 769px) {
       .cs-slide { padding: 72px 64px 64px; }
       .s3-header { margin-bottom: 20px; }
@@ -355,39 +315,44 @@
 </head>
 <body>
 
+  <!-- Cursor -->
   <div class="cursor-dot"  id="cursor-dot"></div>
   <div class="cursor-ring" id="cursor-ring"></div>
   <div id="csCursorHint"></div>
 
+  <!-- Page transition -->
   <div class="page-transition"></div>
 
+  <!-- Top progress -->
   <div class="cs-progress">
     <div class="cs-progress-fill" id="pgFill"></div>
   </div>
 
+  <!-- Nav -->
   <nav id="mainNav">
     <a href="index.html" class="nav-logo">Hazel Chen</a>
-    <span class="cs-nav-project">HouseFund</span>
+    <span class="cs-nav-project">[Project Name]</span>
   </nav>
 
+  <!-- ─── SLIDES ─── -->
   <div class="cs-slides" id="slidesWrap">
 
     <!-- 01 · HERO -->
     <section class="cs-slide active" data-index="0">
       <div class="s1-inner">
         <div>
-          <span class="cs-label">Product Design · iOS · 2024</span>
-          <h1 class="cs-h1" style="margin-bottom: 18px;">HouseFund</h1>
-          <p class="s1-tagline">A coordination system for shared living — not just another bill-splitting app.</p>
-          <div class="s1-tags">
-            <span class="cs-tag">2 Sprints</span>
-            <span class="cs-tag">UX Research</span>
-            <span class="cs-tag">Design System</span>
-            <span class="cs-tag">Prototype</span>
+          <span class="cs-label">[Case Study type · Program/Context · Year]</span>
+          <h1 class="cs-h1" style="margin-bottom: 18px;">[Project Name]</h1>
+          <p class="s1-tagline">[One line: what user problem does this solve?]</p>
+          <div class="s1-tags" style="margin-bottom: 0;">
+            <span class="cs-tag">[Duration]</span>
+            <span class="cs-tag">[Role 1]</span>
+            <span class="cs-tag">[Role 2]</span>
           </div>
         </div>
         <div class="s1-visual">
-          <img src="images/housefund-cover.avif" alt="HouseFund app" class="s1-cover" />
+          <!-- Replace src with actual cover image -->
+          <img src="images/[project]-cover.png" alt="[Project] cover" class="s1-cover" />
         </div>
       </div>
     </section>
@@ -396,169 +361,109 @@
     <section class="cs-slide" data-index="1">
       <div class="s2-inner">
         <span class="cs-label">The Research</span>
-        <h2 class="cs-h2" style="margin-bottom: 20px;">Money doesn't break friendships. Unclear money does.</h2>
-        <p class="cs-body" style="margin-bottom: 36px;">In interviews with 9 housemates, frustration rarely came from the amounts. It came from not knowing who paid, who still owes, and having to be the one to bring it up.</p>
+        <h2 class="cs-h2" style="margin-bottom: 20px;">[Key finding headline — provocative, not obvious]</h2>
+        <p class="cs-body" style="margin-bottom: 36px;">[1–2 sentences: what interviews/research revealed. What was the surprising finding?]</p>
         <div class="cs-stats">
           <div class="cs-stat">
-            <div class="cs-stat-n">9</div>
-            <div class="cs-stat-l">user interviews across shared households</div>
+            <div class="cs-stat-n">[#]</div>
+            <div class="cs-stat-l">[What this number means]</div>
           </div>
           <div class="cs-stat">
-            <div class="cs-stat-n">3</div>
-            <div class="cs-stat-l">behavioural archetypes identified</div>
+            <div class="cs-stat-n">[#]</div>
+            <div class="cs-stat-l">[What this number means]</div>
           </div>
           <div class="cs-stat">
-            <div class="cs-stat-n">4</div>
-            <div class="cs-stat-l">design principles guiding every decision</div>
+            <div class="cs-stat-n">[#]</div>
+            <div class="cs-stat-l">[What this number means]</div>
           </div>
         </div>
         <div class="cs-reframe">
-          <span class="cs-rf-from">"How do we split bills more easily?"</span>
+          <span class="cs-rf-from">"[Old problem framing]"</span>
           <span class="cs-rf-arrow">→</span>
-          <span class="cs-rf-to">"How do we maintain shared financial visibility without creating friction?"</span>
+          <span class="cs-rf-to">"[New reframed problem]"</span>
         </div>
       </div>
     </section>
 
-    <!-- 03 · SOLUTION A -->
+    <!-- 03 · SOLUTION -->
     <section class="cs-slide" data-index="2">
       <div class="s3-inner">
         <div class="s3-header">
           <span class="cs-label">The Solution</span>
-          <h2 class="cs-h2">Clarity before the confusion starts.</h2>
+          <h2 class="cs-h2">[What the product does in one line]</h2>
         </div>
         <div class="s3-grid">
+          <!-- Feature 1 — phone frame (mobile app) -->
           <div class="cs-feat">
             <div class="cs-phone-frame">
-              <video src="images/housefund-home.mp4" autoplay muted loop playsinline></video>
+              <!-- Use <video> for demo, <img> for screenshot -->
+              <video src="images/[project]-feature1.mov" autoplay muted loop playsinline></video>
             </div>
             <div class="cs-feat-body">
-              <p class="cs-feat-name">Home Dashboard</p>
-              <p class="cs-feat-desc">Balance and status, instantly visible. Neutral system reminders replace awkward personal follow-ups.</p>
+              <p class="cs-feat-name">[Feature 1 Name]</p>
+              <p class="cs-feat-desc">[One line: what it does and why it matters]</p>
             </div>
           </div>
+          <!-- Feature 2 -->
           <div class="cs-feat">
             <div class="cs-phone-frame">
-              <video src="images/housefund-addexpense.mp4" autoplay muted loop playsinline></video>
+              <video src="images/[project]-feature2.mov" autoplay muted loop playsinline></video>
             </div>
             <div class="cs-feat-body">
-              <p class="cs-feat-name">Add Expense</p>
-              <p class="cs-feat-desc">Define ownership, split method, and participants upfront. Clear accountability before ambiguity can build up.</p>
+              <p class="cs-feat-name">[Feature 2 Name]</p>
+              <p class="cs-feat-desc">[One line: what it does and why it matters]</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 04 · SOLUTION B -->
+    <!-- 04 · PROCESS -->
     <section class="cs-slide" data-index="3">
-      <div class="s3-inner">
-        <div class="s3-header">
-          <span class="cs-label">The Solution</span>
-          <h2 class="cs-h2">Built for how households actually live.</h2>
-        </div>
-        <div class="s3-grid">
-          <div class="cs-feat">
-            <div class="cs-phone-frame">
-              <video src="images/housefund-tobuylist.mp4" autoplay muted loop playsinline></video>
-            </div>
-            <div class="cs-feat-body">
-              <p class="cs-feat-name">To-Buy List</p>
-              <p class="cs-feat-desc">Shared planning connected directly to expense logging. No more duplicate purchases or repetitive input.</p>
-            </div>
-          </div>
-          <div class="cs-feat">
-            <div class="cs-phone-frame">
-              <video src="images/housefund-tracker.mp4" autoplay muted loop playsinline></video>
-            </div>
-            <div class="cs-feat-body">
-              <p class="cs-feat-name">Tracker</p>
-              <p class="cs-feat-desc">Monthly overview of shared and personal spending by category. Personal budgeting, without the extra effort.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 05 · DESIGN SYSTEM -->
-    <section class="cs-slide" data-index="4">
-      <div class="s-ds-inner">
-        <div>
-          <span class="cs-label">Design System</span>
-          <h2 class="cs-h2" style="margin-bottom: 16px;">A visual language built for financial clarity.</h2>
-          <p class="cs-body" style="margin-bottom: 24px;">Green signals financial status and action. Typography prioritises legibility for quick scanning. Every component reduces cognitive load.</p>
-          <div class="ds-swatches">
-            <div class="ds-chip" style="background:#182818;"></div>
-            <div class="ds-chip" style="background:#2D6030;"></div>
-            <div class="ds-chip" style="background:#3D8042;"></div>
-            <div class="ds-chip" style="background:#5EA863;"></div>
-            <div class="ds-chip" style="background:#94CC97;"></div>
-            <div class="ds-chip" style="background:#D4EDD5;"></div>
-            <div class="ds-chip" style="background:#fffdf8;border:1px solid rgba(0,0,0,0.1);"></div>
-          </div>
-          <div class="ds-principles">
-            <span class="ds-principle">Make responsibility visible</span>
-            <span class="ds-principle">Reduce coordination effort</span>
-            <span class="ds-principle">Lower social friction</span>
-            <span class="ds-principle">Reframe the emotional experience</span>
-          </div>
-        </div>
-        <div class="ds-scroll-outer">
-          <div class="ds-scroll-wrap">
-            <div class="ds-visual">
-              <div class="ds-visual-img"><img src="images/housefund-ds-colors.avif" alt="Colour tokens" /></div>
-              <div class="ds-visual-img"><img src="images/housefund-ds-button.avif" alt="Button components" /></div>
-              <div class="ds-visual-img"><img src="images/housefund-ds-typography.avif" alt="Typography" /></div>
-              <div class="ds-visual-img"><img src="images/housefund-ds-icons.avif" alt="Icons" /></div>
-            </div>
-          </div>
-          <div class="ds-scroll-fade"></div>
-          <p class="ds-scroll-hint">scroll to explore ↓</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 06 · PROCESS -->
-    <section class="cs-slide" data-index="5">
       <div class="s4-inner">
         <span class="cs-label">How We Got There</span>
-        <h2 class="cs-h2">From a messy household problem to a clear system.</h2>
+        <h2 class="cs-h2">[One-line summary of the journey]</h2>
         <div class="cs-beats">
           <div class="cs-beat">
             <div class="cs-beat-n">01</div>
             <p class="cs-beat-t">Research → Reframe</p>
-            <p class="cs-beat-b">9 interviews revealed the pain was coordination, not calculation. We reframed the entire brief: from bill-splitting tool to a shared coordination system.</p>
+            <p class="cs-beat-b">[2 sentences max. What did research reveal? How did it change direction?]</p>
           </div>
           <div class="cs-beat">
             <div class="cs-beat-n">02</div>
-            <p class="cs-beat-t">Archetypes → Scope</p>
-            <p class="cs-beat-b">3 behavioural archetypes mapped across 2 dimensions shaped what to build. The result: 4 focused flows — not a bloated tool trying to do everything.</p>
+            <p class="cs-beat-t">Ideation → Prioritise</p>
+            <p class="cs-beat-b">[2 sentences max. What method? What did you cut and why?]</p>
           </div>
           <div class="cs-beat">
             <div class="cs-beat-n">03</div>
-            <p class="cs-beat-t">Wireframes → Iteration</p>
-            <p class="cs-beat-b">A full sprint on information hierarchy before visual polish. 3 rounds of usability testing refined clarity, reduced friction, and validated every flow.</p>
+            <p class="cs-beat-t">Prototype → Refine</p>
+            <p class="cs-beat-b">[2 sentences max. How did you move from concept to built thing?]</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 07 · OUTCOME -->
-    <section class="cs-slide" data-index="6">
+    <!-- 05 · OUTCOME -->
+    <section class="cs-slide" data-index="4">
       <div class="s5-inner">
         <span class="cs-label">Outcome</span>
-        <h2 class="cs-h2" style="margin-bottom: 20px;">Hi-fi prototype across 4 key flows. Delivered in 2 sprints.</h2>
-        <p class="s5-sub">Full design system established. Usability-tested across 3 rounds. Ready for handoff — with activation and retention metrics defined.</p>
+        <h2 class="cs-h2" style="margin-bottom: 20px;">[Result in one sentence]</h2>
+        <p class="s5-sub">[Context: event, date, program, or impact]</p>
+        <!-- Optional: 3 photos from demo/event -->
+        <div class="s5-photos">
+          <img src="images/[project]-demo1.png" alt="" class="s5-photo" />
+          <img src="images/[project]-demo2.png" alt="" class="s5-photo" />
+          <img src="images/[project]-demo3.png" alt="" class="s5-photo" />
+        </div>
         <div class="s5-btns">
           <a href="index.html" class="cs-ghost-btn">← Back to work</a>
-          <a href="https://app.notion.com/p/From-Who-Owes-What-to-Total-Clarity-Designing-Low-Friction-Expense-Tracking-for-Housemates-315bbc07ca4180ae8294e9a7097c5744#31bbbc07ca4180f19246da67caacdb2f" target="_blank" rel="noopener noreferrer" class="cs-ghost-btn">Full case study ↗</a>
         </div>
       </div>
     </section>
 
   </div>
 
-  <!-- Bottom bar -->
+  <!-- ─── Bottom bar ─── -->
   <footer class="cs-footer">
     <div class="cs-footer-center">
       <button class="cs-btn" id="btnPrev" disabled>
@@ -570,8 +475,6 @@
         <span class="cs-dot"        data-t="2"></span>
         <span class="cs-dot"        data-t="3"></span>
         <span class="cs-dot"        data-t="4"></span>
-        <span class="cs-dot"        data-t="5"></span>
-        <span class="cs-dot"        data-t="6"></span>
       </div>
       <button class="cs-btn" id="btnNext">
         <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
@@ -621,6 +524,7 @@
         if (x < 0.35) goTo(cur - 1);
       });
 
+      // Swipe
       let tx = 0;
       document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
       document.addEventListener('touchend',   e => {
@@ -628,6 +532,7 @@
         if (Math.abs(dx) > 50) dx < 0 ? goTo(cur + 1) : goTo(cur - 1);
       }, { passive: true });
 
+      // Directional cursor hint
       const hint = document.getElementById('csCursorHint');
       document.addEventListener('mousemove', e => {
         hint.style.left = e.clientX + 'px';
