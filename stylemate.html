@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StyleMate — Hazel Chen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ═══════════════════════════════════════════
+       STYLEMATE — IMMERSIVE CASE STUDY
+       ═══════════════════════════════════════════ */
+
+    :root {
+      --sm-bg:     #fffdf8;
+      --sm-dark:   #1c2d18;
+      --sm-green:  #3d7035;
+      --sm-mid:    #6aa85e;
+      --sm-muted:  #5a7052;
+      --sm-border: rgba(61, 112, 53, 0.15);
+      --sm-card:   rgba(255, 255, 255, 0.55);
+    }
+
+    body {
+      background: var(--sm-bg);
+      overflow: hidden;
+      height: 100vh;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Green text selection */
+    ::selection {
+      background: rgba(61, 112, 53, 0.18);
+      color: var(--sm-dark);
+    }
+
+    /* Green cursor for this page */
+    .cursor-ring {
+      background: var(--sm-green) !important;
+      animation: none !important;
+      opacity: 0.2 !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    body.hovering .cursor-ring {
+      opacity: 0.35 !important;
+    }
+
+    /* Directional hint inside ring */
+    #smCursorHint {
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--sm-green);
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      user-select: none;
+      line-height: 1;
+    }
+    #smCursorHint.visible { opacity: 1; }
+
+    nav {
+      background: transparent;
+      border-bottom: none !important;
+    }
+    nav.scrolled { border-bottom: none !important; }
+
+    .sm-nav-project {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--sm-muted);
+      letter-spacing: 0.02em;
+    }
+
+    /* ——— Top progress bar ——— */
+    .sm-progress {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--sm-border);
+      z-index: 300;
+    }
+    .sm-progress-fill {
+      height: 100%;
+      background: var(--sm-green);
+      transition: width 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 20%;
+    }
+
+    /* ——— Slides ——— */
+    .sm-slides {
+      position: fixed;
+      inset: 0;
+    }
+
+    .sm-slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 88px 64px 80px;
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(20px);
+    }
+    .sm-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .sm-slide.exit-up   { opacity: 0; transform: translateY(-20px); }
+    .sm-slide.exit-down { opacity: 0; transform: translateY(20px); }
+
+    /* ——— Bottom bar ——— */
+    .sm-footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 300;
+    }
+
+    .sm-footer-center {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .sm-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .sm-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      border: 1px solid var(--sm-green);
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+    .sm-dot.active {
+      background: var(--sm-green);
+      transform: scale(1.25);
+    }
+
+    .sm-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(61, 112, 53, 0.35);
+      background: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sm-green);
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .sm-btn:hover { background: var(--sm-green); border-color: var(--sm-green); color: #fff; }
+    .sm-btn:disabled { opacity: 0.25; pointer-events: none; }
+    .sm-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ——— Shared type ——— */
+    .sm-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sm-muted);
+      margin-bottom: 22px;
+    }
+    .sm-h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      color: var(--sm-dark);
+    }
+    .sm-h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(26px, 3.2vw, 44px);
+      font-weight: 300;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      color: var(--sm-dark);
+    }
+    .sm-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--sm-muted);
+      line-height: 1.8;
+    }
+    .sm-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--sm-bg);
+      padding: 6px 14px;
+      border: 1px solid transparent;
+      border-radius: 100px;
+      background: var(--sm-dark);
+    }
+    .sm-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--sm-bg);
+      background: var(--sm-dark);
+      padding: 13px 26px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.2s ease, gap 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .sm-cta-btn:hover { background: var(--sm-green); gap: 14px; text-decoration: none; color: var(--sm-bg); }
+    .sm-cta-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    .sm-ghost-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--sm-muted);
+      background: transparent;
+      padding: 13px 26px;
+      border-radius: 100px;
+      border: 1px solid var(--sm-border);
+      text-decoration: none;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .sm-ghost-btn:hover { color: var(--sm-dark); border-color: var(--sm-green); text-decoration: none; }
+
+    /* ═══════════════════════
+       SLIDE 1 — HERO
+       ═══════════════════════ */
+    .s1-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1080px;
+      width: 100%;
+    }
+    .s1-label { margin-bottom: 18px; }
+    .s1-title { margin-bottom: 18px; }
+    .s1-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(15px, 1.5vw, 18px);
+      font-weight: 300;
+      color: var(--sm-muted);
+      line-height: 1.7;
+      max-width: 380px;
+      margin-bottom: 28px;
+    }
+    .s1-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+    .s1-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 460px;
+    }
+    .s1-cover {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 20px;
+      display: block;
+    }
+
+    /* ═══════════════════════
+       SLIDE 2 — INSIGHT
+       ═══════════════════════ */
+    .s2-inner { max-width: 820px; width: 100%; }
+    .s2-title { margin-bottom: 20px; }
+    .s2-body  { margin-bottom: 36px; }
+
+    .sm-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--sm-border);
+      border: 1px solid var(--sm-border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+    .sm-stat { background: var(--sm-bg); padding: 22px 26px; }
+    .sm-stat-n {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      color: var(--sm-dark);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .sm-stat-l { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--sm-muted); line-height: 1.5; }
+
+    .sm-reframe {
+      display: flex;
+      align-items: center;
+      padding: 18px 22px;
+      background: var(--sm-dark);
+      border-radius: 12px;
+      flex-wrap: nowrap;
+      gap: 12px;
+    }
+    .sm-rf-from { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: rgba(242, 248, 235, 0.55); text-decoration: line-through; font-style: italic; flex: 1; }
+    .sm-rf-arrow { color: var(--sm-mid); font-size: 15px; flex-shrink: 0; }
+    .sm-rf-to   { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: #fff; font-style: italic; flex: 1; }
+
+    /* ═══════════════════════
+       SLIDE 3 — SOLUTION
+       ═══════════════════════ */
+    .s3-inner {
+      max-width: 860px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .s3-header { width: 100%; margin-bottom: 36px; }
+    .s3-title  { }
+
+    .s3-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .sm-feat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    /* Phone frame */
+    .sm-phone-frame {
+      width: clamp(140px, 20vh, 200px);
+      aspect-ratio: 9 / 19.5;
+      border: 6px solid #1a1a1a;
+      border-radius: 34px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      flex-shrink: 0;
+    }
+    .sm-phone-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .sm-feat-body { text-align: center; width: 100%; }
+    .sm-feat-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--sm-dark);
+      margin-bottom: 8px;
+    }
+    .sm-feat-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--sm-muted);
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════
+       SLIDE 4 — PROCESS
+       ═══════════════════════ */
+    .s4-inner { max-width: 900px; width: 100%; }
+    .s4-title { margin-bottom: 32px; }
+
+    .sm-beats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--sm-border);
+      border: 1px solid var(--sm-border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .sm-beat { background: var(--sm-bg); padding: 30px 26px; }
+    .sm-beat-n {
+      font-family: 'Inter', sans-serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: rgba(61, 112, 53, 0.2);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .sm-beat-t {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--sm-dark);
+      margin-bottom: 10px;
+    }
+    .sm-beat-b { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--sm-muted); line-height: 1.72; }
+
+    /* ═══════════════════════
+       SLIDE 5 — OUTCOME
+       ═══════════════════════ */
+    .s5-inner { max-width: 680px; width: 100%; text-align: center; }
+    .s5-title { margin-bottom: 20px; }
+    .s5-sub   { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 300; color: var(--sm-muted); line-height: 1.7; margin-bottom: 32px; }
+    .s5-photos {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .s5-photo {
+      width: 160px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+    .s5-btns  { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ——— Responsive (width — tablet) ——— */
+    @media (max-width: 860px) and (min-width: 769px) {
+      .sm-slide { padding: 80px 32px 72px; }
+      .s1-inner { grid-template-columns: 1fr; gap: 28px; }
+      .s1-visual { display: flex; height: 280px; order: 2; }
+      .s1-cover  { border-radius: 14px; }
+      .s3-grid  { grid-template-columns: 1fr; gap: 32px; }
+      .sm-beats { grid-template-columns: 1fr; }
+      .sm-stats { grid-template-columns: 1fr; }
+      .sm-footer { padding: 0; }
+      .sm-reframe { flex-direction: column; align-items: flex-start; }
+      .sm-rf-from, .sm-rf-to { flex: unset; }
+    }
+
+    /* ——— Responsive (mobile — scroll layout) ——— */
+    @media (max-width: 768px) {
+      body { overflow-y: auto !important; height: auto !important; }
+
+      nav {
+        background: var(--sm-bg) !important;
+        border-bottom: 1px solid var(--sm-border) !important;
+      }
+
+      .sm-slides { position: static !important; }
+
+      .sm-slide {
+        position: static !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: none !important;
+        padding: 88px 24px 64px;
+        border-bottom: 1px solid var(--sm-border);
+        min-height: auto;
+      }
+
+      .sm-progress { display: none; }
+
+      .sm-footer { display: none; }
+
+      #smCursorHint { display: none; }
+
+      .s1-inner  { grid-template-columns: 1fr; gap: 28px; }
+      .s1-visual { display: flex; height: 260px; order: 2; }
+      .s1-cover  { border-radius: 14px; }
+      .s3-grid   { grid-template-columns: 1fr; gap: 40px; }
+      .sm-beats  { grid-template-columns: 1fr; }
+      .sm-stats  { grid-template-columns: 1fr; }
+      .sm-reframe { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .sm-rf-from, .sm-rf-to { flex: unset; }
+      .s5-inner  { text-align: left; }
+      .s5-btns   { justify-content: flex-start; }
+    }
+
+    /* ——— Responsive (height — compact) ——— */
+    @media (max-height: 780px) and (min-width: 769px) {
+      .sm-slide { padding: 72px 64px 64px; }
+      .s3-header { margin-bottom: 20px; }
+      .sm-h2 { font-size: clamp(22px, 2.8vw, 36px); }
+      .s3-grid { gap: 48px; }
+    }
+
+    /* ——— Responsive (height — too short, switch to scroll) ——— */
+    @media (max-height: 580px) and (min-width: 769px) {
+      body { overflow-y: auto !important; height: auto !important; }
+
+      nav {
+        background: var(--sm-bg) !important;
+        border-bottom: 1px solid var(--sm-border) !important;
+      }
+
+      .sm-slides { position: static !important; }
+
+      .sm-slide {
+        position: static !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: none !important;
+        padding: 88px 64px 64px;
+        border-bottom: 1px solid var(--sm-border);
+        min-height: auto;
+      }
+
+      .sm-progress { display: none; }
+      .sm-footer   { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cursor -->
+  <div class="cursor-dot"  id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+  <div id="smCursorHint"></div>
+
+  <!-- Page transition -->
+  <div class="page-transition"></div>
+
+  <!-- Top progress -->
+  <div class="sm-progress">
+    <div class="sm-progress-fill" id="pgFill"></div>
+  </div>
+
+  <!-- Nav -->
+  <nav id="mainNav">
+    <a href="index.html" class="nav-logo">Hazel Chen</a>
+    <span class="sm-nav-project">StyleMate</span>
+  </nav>
+
+  <!-- ─── SLIDES ─── -->
+  <div class="sm-slides" id="slidesWrap">
+
+    <!-- 01 · HERO -->
+    <section class="sm-slide active" data-index="0">
+      <div class="s1-inner">
+        <div>
+          <span class="sm-label s1-label">Case Study · Apple Foundation Program · 2024</span>
+          <h1 class="sm-h1 s1-title">Style<wbr>Mate</h1>
+          <p class="s1-tagline">An iOS app that helps users wear more of what they already own.</p>
+          <div class="s1-tags">
+            <span class="sm-tag">3 Weeks</span>
+            <span class="sm-tag">UX Research</span>
+            <span class="sm-tag">UI/UX Design</span>
+            <span class="sm-tag">iOS Development</span>
+          </div>
+        </div>
+        <div class="s1-visual">
+          <img src="images/stylemate-cover.png" alt="StyleMate app screens" class="s1-cover" />
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 · INSIGHT -->
+    <section class="sm-slide" data-index="1">
+      <div class="s2-inner">
+        <span class="sm-label">The Research</span>
+        <h2 class="sm-h2 s2-title">The real barrier isn't knowing —<br>it's forgetting.</h2>
+        <p class="sm-body s2-body">Everyone knows fast fashion is wasteful. But our user interviews revealed a different root cause: people forget what they already own, leading to impulse purchases they didn't need.</p>
+        <div class="sm-stats">
+          <div class="sm-stat">
+            <div class="sm-stat-n">56</div>
+            <div class="sm-stat-l">new clothing items bought per Australian per year — among the world's highest</div>
+          </div>
+          <div class="sm-stat">
+            <div class="sm-stat-n">10%</div>
+            <div class="sm-stat-l">of their wardrobe people actually wear on a regular basis</div>
+          </div>
+          <div class="sm-stat">
+            <div class="sm-stat-n">300K</div>
+            <div class="sm-stat-l">tonnes of clothing waste generated in Australia each year</div>
+          </div>
+        </div>
+        <div class="sm-reframe">
+          <span class="sm-rf-from">"How can we create awareness of reusability?"</span>
+          <span class="sm-rf-arrow">→</span>
+          <span class="sm-rf-to">"How can we create willingness to use what you already have?"</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · SOLUTION -->
+    <section class="sm-slide" data-index="2">
+      <div class="s3-inner">
+        <div class="s3-header">
+          <span class="sm-label">The Solution</span>
+          <h2 class="sm-h2 s3-title">An app that makes your existing wardrobe feel new.</h2>
+        </div>
+        <div class="s3-grid">
+          <div class="sm-feat">
+            <div class="sm-phone-frame">
+              <video src="images/stylemate-wardrobe.mov" autoplay muted loop playsinline></video>
+            </div>
+            <div class="sm-feat-body">
+              <p class="sm-feat-name">Digital Wardrobe</p>
+              <p class="sm-feat-desc">A visual inventory of everything you own — so you stop buying what you already have.</p>
+            </div>
+          </div>
+          <div class="sm-feat">
+            <div class="sm-phone-frame">
+              <video src="images/stylemate-dresser.mov" autoplay muted loop playsinline></video>
+            </div>
+            <div class="sm-feat-body">
+              <p class="sm-feat-name">Smart Dresser</p>
+              <p class="sm-feat-desc">Outfit suggestions built from your existing clothes — so getting dressed doesn't mean buying something new.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · PROCESS -->
+    <section class="sm-slide" data-index="3">
+      <div class="s4-inner">
+        <span class="sm-label">How We Got There</span>
+        <h2 class="sm-h2 s4-title">From insight to working prototype in 3 weeks.</h2>
+        <div class="sm-beats">
+          <div class="sm-beat">
+            <div class="sm-beat-n">01</div>
+            <p class="sm-beat-t">Research → Reframe</p>
+            <p class="sm-beat-b">People aren't resistant to sustainability — they just forget what they own. That insight reframed everything.</p>
+          </div>
+          <div class="sm-beat">
+            <div class="sm-beat-n">02</div>
+            <p class="sm-beat-t">Ideation → Prioritise</p>
+            <p class="sm-beat-b">Lotus Blossom ideation, then cut aggressively to two features that directly addressed the insight.</p>
+          </div>
+          <div class="sm-beat">
+            <div class="sm-beat-n">03</div>
+            <p class="sm-beat-t">Prototype → Refine</p>
+            <p class="sm-beat-b">Mapped 3 user story flows before touching Figma. One feedback round, then straight to Hi-Fi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · OUTCOME -->
+    <section class="sm-slide" data-index="4">
+      <div class="s5-inner">
+        <span class="sm-label">Outcome</span>
+        <h2 class="sm-h2 s5-title">Working iOS prototype.<br>Delivered in 3 weeks.</h2>
+        <p class="s5-sub">Presented at Apple Foundation Program Demo Day · UTS, November 2024</p>
+        <div class="s5-photos">
+          <img src="images/stylemate-demo1.png" alt="" class="s5-photo" />
+          <img src="images/stylemate-demo2.png" alt="" class="s5-photo" />
+          <img src="images/stylemate-demo3.png" alt="" class="s5-photo" />
+        </div>
+        <div class="s5-btns">
+          <a href="index.html" class="sm-ghost-btn">← Back to work</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ─── Bottom bar ─── -->
+  <footer class="sm-footer">
+    <div class="sm-footer-center">
+      <button class="sm-btn" id="btnPrev" disabled>
+        <svg viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <div class="sm-dots" id="smDots">
+        <span class="sm-dot active" data-t="0"></span>
+        <span class="sm-dot"        data-t="1"></span>
+        <span class="sm-dot"        data-t="2"></span>
+        <span class="sm-dot"        data-t="3"></span>
+        <span class="sm-dot"        data-t="4"></span>
+      </div>
+      <button class="sm-btn" id="btnNext">
+        <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    (() => {
+      const slides  = [...document.querySelectorAll('.sm-slide')];
+      const dots    = [...document.querySelectorAll('.sm-dot')];
+      const fill    = document.getElementById('pgFill');
+      const btnPrev = document.getElementById('btnPrev');
+      const btnNext = document.getElementById('btnNext');
+      const TOTAL   = slides.length;
+      let cur = 0;
+      let animating = false;
+
+      function goTo(next) {
+        if (animating || next === cur || next < 0 || next >= TOTAL) return;
+        animating = true;
+
+        const dir = next > cur ? 'exit-up' : 'exit-down';
+        slides[cur].classList.add(dir);
+        slides[cur].classList.remove('active');
+
+        cur = next;
+        slides[cur].classList.add('active');
+
+        setTimeout(() => {
+          slides.forEach(s => s.classList.remove('exit-up', 'exit-down'));
+          animating = false;
+        }, 560);
+
+        dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+        fill.style.width = ((cur + 1) / TOTAL * 100) + '%';
+        btnPrev.disabled = cur === 0;
+        btnNext.disabled = cur === TOTAL - 1;
+      }
+
+      btnNext.addEventListener('click', () => goTo(cur + 1));
+      btnPrev.addEventListener('click', () => goTo(cur - 1));
+      dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.t)));
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(cur + 1);
+        if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goTo(cur - 1);
+      });
+
+      // Click zone — right 55% = next, left 35% = prev (ignore interactive elements)
+      document.getElementById('slidesWrap').addEventListener('click', e => {
+        if (e.target.closest('a, button, .sm-dot')) return;
+        const x = e.clientX / window.innerWidth;
+        if (x > 0.65) goTo(cur + 1);
+        if (x < 0.35) goTo(cur - 1);
+      });
+
+      // Directional cursor hint
+      const hint = document.getElementById('smCursorHint');
+      document.addEventListener('mousemove', e => {
+        hint.style.left = e.clientX + 'px';
+        hint.style.top  = e.clientY + 'px';
+
+        if (e.target.closest('a, button, .sm-dot, nav, .sm-footer')) {
+          hint.classList.remove('visible');
+          return;
+        }
+        const x = e.clientX / window.innerWidth;
+        if (x > 0.55 && cur < TOTAL - 1) {
+          hint.textContent = '→';
+          hint.classList.add('visible');
+        } else if (x < 0.45 && cur > 0) {
+          hint.textContent = '←';
+          hint.classList.add('visible');
+        } else {
+          hint.classList.remove('visible');
+        }
+      });
+
+      document.addEventListener('mouseleave', () => hint.classList.remove('visible'));
+
+      // Swipe support
+      let tx = 0;
+      document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+      document.addEventListener('touchend',   e => {
+        const dx = e.changedTouches[0].clientX - tx;
+        if (Math.abs(dx) > 50) dx < 0 ? goTo(cur + 1) : goTo(cur - 1);
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
